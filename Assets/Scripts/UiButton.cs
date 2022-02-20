@@ -19,6 +19,6 @@ public class UiButton : MonoBehaviour
 
     public void Play(int s)
     {
-        SceneManager.LoadScene(s);
+        FindObjectOfType<SceneLoader>().LoadSceneAsync(s);
     }
 }
