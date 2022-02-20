@@ -33,10 +33,7 @@ public class SceneLoader : MonoBehaviour
         AsyncOperation op = SceneManager.LoadSceneAsync(idx);
         op.allowSceneActivation = false;
 
-        while (op.progress < 0.85f)
-        {
-            yield return null;
-        }
+        yield return new WaitUntil(() => (op.isDone || op.progress > 0.85f));
 
         op.allowSceneActivation = true;
 
