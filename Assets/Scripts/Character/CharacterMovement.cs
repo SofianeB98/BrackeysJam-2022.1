@@ -7,7 +7,6 @@ public class CharacterMovement : MonoBehaviour
 {
     [Header("Dependencies")] [SerializeField]
     private CharacterInput m_CharacterInput = null;
-
     [SerializeField] private Transform m_CameraReferential = null;
     [SerializeField] private CharacterController m_CharacterController = null;
 
@@ -16,6 +15,9 @@ public class CharacterMovement : MonoBehaviour
 
     [Header("Dash Data")] 
     [SerializeField] private CharacterDashData m_DashData;
+    [SerializeField] private int m_IgnoreCollisionsLayer = 7;
+    [SerializeField] private int m_DefaultLayer = 6;
+    
     
     private Vector3 m_CurrentDirection = Vector3.zero;
     private float m_CurrentSpeed = 0.0f;
@@ -29,6 +31,8 @@ public class CharacterMovement : MonoBehaviour
     private float m_CurrentDashDuration = 0.0f;
     private float m_DashRecoveryTimer = 0.0f;
 
+    private CollisionFlags m_DefaultCollisionFlags;
+    
     private void Awake()
     {
         if (m_CharacterController == null)
@@ -38,6 +42,8 @@ public class CharacterMovement : MonoBehaviour
             m_CharacterInput = GetComponent<CharacterInput>();
 
         m_Translation = transform.forward;
+        m_DefaultCollisionFlags = m_CharacterController.collisionFlags;
+        m_DefaultLayer = gameObject.layer;
     }
 
     private void Start()
@@ -82,6 +88,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (m_CurrentDashDuration > m_DashData.DashDuration)
         {
+            gameObject.layer = m_DefaultLayer;
             if (m_DashRecoveryTimer > m_DashData.DashRecoveryDuration)
             {
                 m_IsDashing = false;
@@ -168,7 +175,6 @@ public class CharacterMovement : MonoBehaviour
     /// <param name="dir">Input direction from player</param>
     private void UpdateMove(Vector2 dir)
     {
-
         Vector3 dir3D = new Vector3(dir.x, 0.0f, dir.y).normalized;
         Quaternion qt = Quaternion.Euler(0.0f, m_CameraReferential.eulerAngles.y, 0.0f);
         m_CurrentDirection = qt * dir3D;
@@ -184,6 +190,7 @@ public class CharacterMovement : MonoBehaviour
     private void TriggerDash()
     {
         m_IsDashing = true;
+        gameObject.layer = m_IgnoreCollisionsLayer;
         m_DashRecoveryTimer = 0f;
         m_CurrentDashDuration = 0f;
         m_DashLoadingTimer = Time.time + m_DashData.DashLoadDuration;
