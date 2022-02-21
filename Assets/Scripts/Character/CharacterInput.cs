@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "InputDispatcher", menuName = "Input/New Input Dispatcher", order = 0)]
-public class InputDispatcher : ScriptableObject, PlayerInputs.IPlayerActions
+public class CharacterInput : MonoBehaviour, PlayerInputs.IPlayerActions
 {
     public event Action<Vector2> MoveEvent = null;
     
@@ -24,6 +23,7 @@ public class InputDispatcher : ScriptableObject, PlayerInputs.IPlayerActions
     private void OnDisable()
     {
         m_GameInput.Player.Disable();
+        MoveEvent = null;
     }
     
     public void OnMove(InputAction.CallbackContext context)

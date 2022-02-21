@@ -9,6 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2bdbd2155adfbb46ab47be82f22eff8, type: 3}
-  m_Name: InputDispatcher
+  m_Script: {fileID: 11500000, guid: 0af1a32e3d3d8b04c9c72c9d1f7c5876, type: 3}
+  m_Name: DashData
   m_EditorClassIdentifier: 
+  DashSpeed: 50
+  DashDistance: 20
+  DashDuration: 0.4
+  DashReloadDuration: 1
+  InvincibleDuration: 1
+  DashRecoveryDuration: 1
