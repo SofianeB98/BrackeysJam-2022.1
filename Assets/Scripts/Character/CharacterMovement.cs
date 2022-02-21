@@ -11,15 +11,23 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Transform m_CameraReferential = null;
     [SerializeField] private CharacterController m_CharacterController = null;
 
-    [Header("Movement Data")] [SerializeField]
-    private CharacterMovementData m_MovementData;
+    [Header("Movement Data")] 
+    [SerializeField] private CharacterMovementData m_MovementData;
 
+    [Header("Dash Data")] 
+    [SerializeField] private CharacterDashData m_DashData;
+    
     private Vector3 m_CurrentDirection = Vector3.zero;
     private float m_CurrentSpeed = 0.0f;
     private Vector3 m_Translation = Vector3.zero;
 
     private bool m_HasSuperSpeedOn = false;
     private float m_SuperSpeedTimer = 0.0f;
+
+    private bool m_IsDashing = false;
+    private float m_DashLoadingTimer = 0.0f;
+    private float m_CurrentDashDuration = 0.0f;
+    private float m_DashRecoveryTimer = 0.0f;
 
     private void Awake()
     {
@@ -28,6 +36,8 @@ public class CharacterMovement : MonoBehaviour
 
         if (m_CharacterInput == null)
             m_CharacterInput = GetComponent<CharacterInput>();
+
+        m_Translation = transform.forward;
     }
 
     private void Start()
@@ -38,22 +48,63 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        m_CharacterInput.MoveEvent += Move;
+        m_CharacterInput.MoveEvent += UpdateMove;
+        m_CharacterInput.DashEvent += TriggerDash;
     }
 
     private void OnDisable()
     {
-        m_CharacterInput.MoveEvent -= Move;
+        m_CharacterInput.MoveEvent -= UpdateMove;
+        m_CharacterInput.DashEvent -= TriggerDash;
     }
 
     private void Update()
     {
+        if (m_IsDashing)
+        {
+            ProcessDash();
+            return;
+        }
+        
         CheckResetSuperSpeed();
         TriggerSuperSpeed();
         UpdateCurrentSpeed();
-
-        m_Translation = m_CurrentDirection.sqrMagnitude > 0 ? m_CurrentDirection : m_Translation;
+        
         m_CharacterController.Move(m_Translation * (m_CurrentSpeed * Time.deltaTime));
+    }
+
+    private void ProcessDash()
+    {
+        if (!CheckDashLoadDuration())
+        {
+            return;
+        }
+
+        if (m_CurrentDashDuration > m_DashData.DashDuration)
+        {
+            if (m_DashRecoveryTimer > m_DashData.DashRecoveryDuration)
+            {
+                m_IsDashing = false;
+                m_DashRecoveryTimer = 0f;
+                m_CurrentDashDuration = 0f;
+                m_DashLoadingTimer = 0f;
+            }
+            
+            m_CharacterController.Move(m_Translation * (m_CurrentSpeed * Time.deltaTime));
+            m_DashRecoveryTimer += Time.deltaTime;
+            return;
+        }
+        
+        m_CharacterController.Move(m_Translation * (m_DashData.DashSpeed * Time.deltaTime));
+        m_CurrentDashDuration += Time.deltaTime;
+    }
+
+    private bool CheckDashLoadDuration()
+    {
+        if (m_DashLoadingTimer < Time.time)
+            return true;
+
+        return false;
     }
 
     private void CheckResetSuperSpeed()
@@ -107,19 +158,35 @@ public class CharacterMovement : MonoBehaviour
             Time.deltaTime * speedTarget / m_MovementData.AccelDuration);
     }
 
+    
+    
     #region Callbacks
 
     /// <summary>
     /// Callback from OnMove input
     /// </summary>
     /// <param name="dir">Input direction from player</param>
-    private void Move(Vector2 dir)
+    private void UpdateMove(Vector2 dir)
     {
+
         Vector3 dir3D = new Vector3(dir.x, 0.0f, dir.y).normalized;
         Quaternion qt = Quaternion.Euler(0.0f, m_CameraReferential.eulerAngles.y, 0.0f);
         m_CurrentDirection = qt * dir3D;
         m_CurrentDirection.Normalize();
+        
+        if (!m_IsDashing)
+            m_Translation = m_CurrentDirection.sqrMagnitude > 0 ? m_CurrentDirection : m_Translation;
     }
 
+    /// <summary>
+    /// Callback from OnDash input
+    /// </summary>
+    private void TriggerDash()
+    {
+        m_IsDashing = true;
+        m_DashRecoveryTimer = 0f;
+        m_CurrentDashDuration = 0f;
+        m_DashLoadingTimer = Time.time + m_DashData.DashLoadDuration;
+    }
     #endregion
 }

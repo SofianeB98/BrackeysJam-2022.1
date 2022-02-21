@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class CharacterInput : MonoBehaviour, PlayerInputs.IPlayerActions
 {
     public event Action<Vector2> MoveEvent = null;
+    public event Action DashEvent = null;
     
     private PlayerInputs m_GameInput;
     
@@ -38,7 +39,10 @@ public class CharacterInput : MonoBehaviour, PlayerInputs.IPlayerActions
 
     public void OnDash(InputAction.CallbackContext context)
     {
+        if (!context.action.triggered)
+            return;
         
+        DashEvent?.Invoke();
     }
 
     public void OnShoot(InputAction.CallbackContext context)

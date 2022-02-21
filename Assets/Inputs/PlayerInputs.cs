@@ -290,6 +290,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""4cbc0b32-0ba1-4df1-bc3f-9ca6ebbfd4ea"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""cd2ff1fd-6365-4f75-98cb-82450b48713e"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",

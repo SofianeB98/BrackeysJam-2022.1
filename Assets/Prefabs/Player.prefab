@@ -69,6 +69,7 @@ MonoBehaviour:
   m_CameraReferential: {fileID: 0}
   m_CharacterController: {fileID: 8507595967052323328}
   m_MovementData: {fileID: 11400000, guid: 0bf089499ab47344d8931120b23a3667, type: 2}
+  m_DashData: {fileID: 11400000, guid: 567627bda325f5b45840757cf0472abb, type: 2}
 --- !u!114 &3479496615735331199
 MonoBehaviour:
   m_ObjectHideFlags: 0
