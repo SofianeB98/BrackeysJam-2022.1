@@ -5,12 +5,12 @@ using UnityEngine;
 public class CharacterDashData : ScriptableObject
 {
     [Header("Dash")]
-    public float DashSpeed = 5.0f;
-    public float DashDistance = 1.0f;
-    public float DashDuration = 1.0f;
-    public float DashReloadDuration = 1.0f;
-    public float InvincibleDuration = 1.0f;
-    public float DashRecoveryDuration = 1.0f;
+    [Tooltip("in Unity Unit/s")] public float DashSpeed = 5.0f;
+    [Tooltip("in Unity Unit")] public float DashDistance = 1.0f;
+    [Tooltip("in seconds")] public float DashDuration = 1.0f;
+    [Tooltip("in seconds")] public float DashLoadDuration = 1.0f;
+    [Tooltip("in seconds")] public float InvincibleDuration = 1.0f;
+    [Tooltip("in seconds")] public float DashRecoveryDuration = 1.0f;
     
     private void OnValidate()
     {
