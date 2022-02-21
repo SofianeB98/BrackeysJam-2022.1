@@ -189,6 +189,9 @@ public class CharacterMovement : MonoBehaviour
     /// </summary>
     private void TriggerDash()
     {
+        if (m_IsDashing)
+            return;
+        
         m_IsDashing = true;
         gameObject.layer = m_IgnoreCollisionsLayer;
         m_DashRecoveryTimer = 0f;

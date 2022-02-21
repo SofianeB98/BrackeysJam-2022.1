@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8507595967052323331}
   - component: {fileID: 8507595967052323328}
   - component: {fileID: 8507595967052323329}
+  - component: {fileID: 4357105696765103350}
   - component: {fileID: 3479496615735331199}
   m_Layer: 6
   m_Name: Player
@@ -70,6 +71,20 @@ MonoBehaviour:
   m_CharacterController: {fileID: 8507595967052323328}
   m_MovementData: {fileID: 11400000, guid: 0bf089499ab47344d8931120b23a3667, type: 2}
   m_DashData: {fileID: 11400000, guid: 567627bda325f5b45840757cf0472abb, type: 2}
+  m_IgnoreCollisionsLayer: 7
+  m_DefaultLayer: 6
+--- !u!114 &4357105696765103350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8507595967052323334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8fd188be8c21b4b9f08dcc01f3058e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3479496615735331199
 MonoBehaviour:
   m_ObjectHideFlags: 0
