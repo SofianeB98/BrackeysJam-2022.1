@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     private CharacterInput m_CharacterInput = null;
     [SerializeField] private Transform m_CameraReferential = null;
     [SerializeField] private CharacterController m_CharacterController = null;
+    [SerializeField] private Animator m_CharacterAnimator = null;
 
     [Header("Movement Data")] 
     [SerializeField] private CharacterMovementData m_MovementData;
@@ -34,6 +35,7 @@ public class CharacterMovement : MonoBehaviour
     private CollisionFlags m_DefaultCollisionFlags;
 
     private bool m_CanMove = true;
+    private bool m_IsMoving = false;
     
     private void Awake()
     {
@@ -68,6 +70,13 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
+        if (m_CharacterController.velocity.magnitude > 0)
+            m_IsMoving = true;
+        else
+            m_IsMoving = false;
+
+        m_CharacterAnimator.SetBool("isMoving", m_IsMoving);
+
         if (m_IsDashing)
         {
             ProcessDash();
@@ -80,6 +89,7 @@ public class CharacterMovement : MonoBehaviour
         {
             return;
         }
+
         
         TriggerSuperSpeed();
         UpdateCurrentSpeed();

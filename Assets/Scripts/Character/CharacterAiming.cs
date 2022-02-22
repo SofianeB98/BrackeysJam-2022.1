@@ -11,7 +11,8 @@ public class CharacterAiming : MonoBehaviour
     [SerializeField] private CharacterInput m_CharacterInput = null;
     [SerializeField] private Camera m_CameraReferential = null;
     [SerializeField] private CharacterController m_CharacterController = null;
-    
+    [SerializeField] private Animator m_CharacterAnimator = null;
+
     private Vector3 m_AimingDirection = Vector3.forward;
     private Plane m_Plane;
     
@@ -50,6 +51,7 @@ public class CharacterAiming : MonoBehaviour
         Quaternion qt = Quaternion.Euler(0.0f, m_CameraReferential.transform.eulerAngles.y, 0.0f);
         m_AimingDirection = qt * dir3D;
         m_AimingDirection.Normalize();
+        transform.rotation = Quaternion.LookRotation(m_AimingDirection.sqrMagnitude > Mathf.Epsilon ? m_AimingDirection : m_CharacterController.velocity.normalized, Vector3.up);
     }
     
     private void UpdateAimingByMouse(Vector2 screenPos)
@@ -63,6 +65,7 @@ public class CharacterAiming : MonoBehaviour
         position.y = 0;
         point.y = 0;
         m_AimingDirection = (point - position).normalized;
+        transform.rotation = Quaternion.LookRotation(m_AimingDirection.sqrMagnitude > Mathf.Epsilon ? m_AimingDirection : m_CharacterController.velocity.normalized, Vector3.up);
     }
     
     #region Callbacks
@@ -73,6 +76,19 @@ public class CharacterAiming : MonoBehaviour
             UpdateAimingByGamepad(dir);
         else
             UpdateAimingByMouse(dir);
+
+        var direction = m_CharacterController.velocity.normalized;
+        var aiming = m_AimingDirection.normalized;
+        var angle = Vector3.Dot(direction,aiming);
+        angle = Mathf.Acos(angle) * Mathf.Rad2Deg * Mathf.Sign(angle);
+
+        var dirToLook = (direction - aiming).normalized;
+        dirToLook.y = 0;
+        Quaternion qt = Quaternion.Euler(0.0f, angle, 0.0f);
+        dirToLook = qt * direction;
+
+        m_CharacterAnimator.SetFloat("BlendX", dirToLook.x);
+        m_CharacterAnimator.SetFloat("BlendY", dirToLook.z);
     }
 
     #endregion

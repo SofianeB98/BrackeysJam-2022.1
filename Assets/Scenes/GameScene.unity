@@ -1371,7 +1371,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &552499396
 MonoBehaviour:
@@ -7215,7 +7215,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &573724968
 PrefabInstance:
@@ -7471,7 +7471,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2488047018795776868, guid: 009cbbbecafbcfc4f9bc5eb81c9f2bd1, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2488047018795776868, guid: 009cbbbecafbcfc4f9bc5eb81c9f2bd1, type: 3}
       propertyPath: m_LocalScale.x
@@ -7990,7 +7990,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7784091, y: 1}
+    m_SensorSize: {x: 1.7764423, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8533,6 +8533,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5040722, y: 1.680902, z: 2.0806856}
   m_Center: {x: 0.59971714, y: 0.07623303, z: 0.22753477}
+--- !u!95 &1476176798 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6278658651488742519, guid: 61299e9073057cb47a25ef7488d9f4f0, type: 3}
+  m_PrefabInstance: {fileID: 8507595965415637285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1493453236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9044,6 +9049,10 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7152859260490973557, guid: 61299e9073057cb47a25ef7488d9f4f0, type: 3}
+      propertyPath: m_CharacterAnimator
+      value: 
+      objectReference: {fileID: 1476176798}
     - target: {fileID: 8507595967052323328, guid: 61299e9073057cb47a25ef7488d9f4f0, type: 3}
       propertyPath: m_Height
       value: 2
@@ -9056,6 +9065,10 @@ PrefabInstance:
       propertyPath: m_CameraReferential
       value: 
       objectReference: {fileID: 498607737}
+    - target: {fileID: 8507595967052323329, guid: 61299e9073057cb47a25ef7488d9f4f0, type: 3}
+      propertyPath: m_CharacterAnimator
+      value: 
+      objectReference: {fileID: 1476176798}
     - target: {fileID: 8507595967052323331, guid: 61299e9073057cb47a25ef7488d9f4f0, type: 3}
       propertyPath: m_RootOrder
       value: 2
