@@ -25,8 +25,9 @@ public class CharacterAbility : MonoBehaviour
     
     [Header("Range Ability")]
     [SerializeField] private CharacterRangeAbilityData m_RangeAbilityData;
+    [SerializeField] private CharacterProjectile m_Projectile;
 
-    private AbilityState m_CurrantAbilityState = AbilityState.NONE;
+    private AbilityState m_CurrentAbilityState = AbilityState.NONE;
     
     private void Awake()
     {
@@ -59,7 +60,7 @@ public class CharacterAbility : MonoBehaviour
 
     private void Update()
     {
-        switch (m_CurrantAbilityState)
+        switch (m_CurrentAbilityState)
         {
             case AbilityState.NONE:
             case AbilityState.CAN_NOT_PERFORM_ABILITY:
@@ -68,21 +69,27 @@ public class CharacterAbility : MonoBehaviour
                 // Some stuff
                 break;
             case AbilityState.RANGE:
-                InvokeRepeating(nameof(RangeAbility), 0.2f, 0.5f);
+                RangeAbility();
                 break;
             case AbilityState.ULTIMATE:
                 break;
         }
     }
 
+    private float m_RangeAbilityTimer = 0f;
     private void RangeAbility()
     {
-        
+        if (m_RangeAbilityTimer < Time.time)
+        {
+            m_RangeAbilityTimer = Time.time + m_RangeAbilityData.DelayBetweenShoot;
+            Instantiate(m_Projectile, transform.position,
+                Quaternion.LookRotation(m_CharacterAiming.AimingDirection, Vector3.up));
+        }
     }
     
     private void CancelCurrentAction()
     {
-        switch (m_CurrantAbilityState)
+        switch (m_CurrentAbilityState)
         {
             case AbilityState.NONE:
             case AbilityState.CAN_NOT_PERFORM_ABILITY:
@@ -101,40 +108,40 @@ public class CharacterAbility : MonoBehaviour
     private void TriggerCanNotPerformAbility(bool canPerform)
     {
         CancelCurrentAction();
-        m_CurrantAbilityState = canPerform ? AbilityState.NONE : AbilityState.CAN_NOT_PERFORM_ABILITY;
+        m_CurrentAbilityState = canPerform ? AbilityState.NONE : AbilityState.CAN_NOT_PERFORM_ABILITY;
     }
     
     private void TriggerMeleeAbility()
     {
-        if (m_CurrantAbilityState == AbilityState.CAN_NOT_PERFORM_ABILITY)
+        if (m_CurrentAbilityState == AbilityState.CAN_NOT_PERFORM_ABILITY)
             return;
         
         Debug.Log("Melee Ability !!");
         
         CancelCurrentAction();
-        m_CurrantAbilityState = AbilityState.MELEE;
+        m_CurrentAbilityState = AbilityState.MELEE;
     }
 
     private void TriggerRangeAbility(bool isPerformed)
     {
-        if (m_CurrantAbilityState == AbilityState.CAN_NOT_PERFORM_ABILITY)
+        if (m_CurrentAbilityState == AbilityState.CAN_NOT_PERFORM_ABILITY)
             return;
         
         Debug.Log("Range Ability !! " + isPerformed);
         
         CancelCurrentAction();
-        m_CurrantAbilityState = AbilityState.RANGE;
+        m_CurrentAbilityState = isPerformed ? AbilityState.RANGE : AbilityState.NONE;
     }
 
     private void TriggerUltimateAbility()
     {
-        if (m_CurrantAbilityState == AbilityState.CAN_NOT_PERFORM_ABILITY)
+        if (m_CurrentAbilityState == AbilityState.CAN_NOT_PERFORM_ABILITY)
             return;
         
         Debug.Log("Ultimate Ability");
         
         CancelCurrentAction();
-        m_CurrantAbilityState = AbilityState.ULTIMATE;
+        m_CurrentAbilityState = AbilityState.ULTIMATE;
     }
     
     #endregion
