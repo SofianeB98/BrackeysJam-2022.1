@@ -6,20 +6,32 @@ using UnityEngine.InputSystem;
 
 public class CharacterInput : MonoBehaviour, PlayerInputs.IPlayerActions
 {
+    public const string GAMEPAD_SCHEME = "GamepadScheme";
+    public const string KEYBOARD_MOUSE_SCHEME = "Keyboard-Mouse";
+    
+    
     public event Action<Vector2> MoveEvent = null;
     public event Action DashEvent = null;
     public event Action MeleeAbilityEvent = null;
     public event Action<bool> RangeAbilityEvent = null;
     public event Action UltimateAbilityEvent = null;
 
-
+    [SerializeField] private bool m_UseGamepad = false;
     private PlayerInputs m_GameInput;
+
+    private void OnValidate()
+    {
+        if (m_GameInput != null)
+            m_GameInput.bindingMask = new InputBinding {groups = m_UseGamepad ? GAMEPAD_SCHEME : KEYBOARD_MOUSE_SCHEME};
+    }
+
 
     private void OnEnable()
     {
         if (m_GameInput == null)
         {
             m_GameInput = new PlayerInputs();
+            m_GameInput.bindingMask = new InputBinding {groups = m_UseGamepad ? GAMEPAD_SCHEME : KEYBOARD_MOUSE_SCHEME};
             m_GameInput.Player.SetCallbacks(this);
             m_GameInput.Player.Enable();
         }
@@ -28,7 +40,6 @@ public class CharacterInput : MonoBehaviour, PlayerInputs.IPlayerActions
     private void OnDisable()
     {
         m_GameInput.Player.Disable();
-        MoveEvent = null;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -38,6 +49,8 @@ public class CharacterInput : MonoBehaviour, PlayerInputs.IPlayerActions
 
     public void OnAiming(InputAction.CallbackContext context)
     {
+        Debug.Log(context.control.device);
+        Debug.Log(context.ReadValue<Vector2>());
     }
 
     public void OnDash(InputAction.CallbackContext context)

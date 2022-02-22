@@ -214,7 +214,7 @@
                 {
                     "name": "down",
                     "id": "9ccb7266-be07-4615-abbc-9145f9312b6c",
-                    "path": "<Gamepad>/leftStick/down",
+                    "path": "<Gamepad>/rightStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamepadScheme",
@@ -225,7 +225,7 @@
                 {
                     "name": "left",
                     "id": "940275ab-f089-4c3f-b708-aa56924cc72a",
-                    "path": "<Gamepad>/leftStick/left",
+                    "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamepadScheme",
@@ -236,7 +236,7 @@
                 {
                     "name": "right",
                     "id": "005b6413-ab67-40e6-b85e-e486eebc77b9",
-                    "path": "<Gamepad>/leftStick/right",
+                    "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamepadScheme",
@@ -247,7 +247,7 @@
                 {
                     "name": "",
                     "id": "ba5a4e15-34b3-48df-9318-76f6362dea7f",
-                    "path": "<Pointer>/position",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard-Mouse",

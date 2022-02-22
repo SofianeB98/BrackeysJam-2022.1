@@ -85,6 +85,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8fd188be8c21b4b9f08dcc01f3058e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CharacterInput: {fileID: 0}
+  m_CameraReferential: {fileID: 0}
+  m_CharacterController: {fileID: 0}
+  m_MeleeData: {fileID: 11400000, guid: 03fda6581f1f37f479870f3873f37ad6, type: 2}
 --- !u!114 &3479496615735331199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +162,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 824015559753126921, guid: 2fd190ce400ecc042b163489325ef1ba, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
