@@ -131,7 +131,6 @@ public class CharacterAbility : MonoBehaviour
         
         CancelCurrentAction();
         m_CurrentAbilityState = isPerformed ? AbilityState.RANGE : AbilityState.NONE;
-        InvokeRepeating(nameof(RangeAbility), 0.0f, m_RangeAbilityData.DelayBetweenShoot);
     }
 
     private void TriggerUltimateAbility()
