@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aea46274e872b7743887a6e24aa652b9, type: 3}
-  m_Name: MeleeData
+  m_Name: MeleeAbilityData
   m_EditorClassIdentifier: 
   Damage: 10

@@ -102,9 +102,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CharacterInput: {fileID: 3479496615735331199}
+  m_CharacterAiming: {fileID: 7152859260490973557}
   m_CameraReferential: {fileID: 0}
   m_CharacterController: {fileID: 8507595967052323328}
-  m_MeleeData: {fileID: 11400000, guid: 03fda6581f1f37f479870f3873f37ad6, type: 2}
+  m_MeleeAbilityData: {fileID: 11400000, guid: 03fda6581f1f37f479870f3873f37ad6, type: 2}
+  m_RangeAbilityData: {fileID: 11400000, guid: 853c8cac9563568468ad949917f7f09f, type: 2}
 --- !u!114 &3479496615735331199
 MonoBehaviour:
   m_ObjectHideFlags: 0

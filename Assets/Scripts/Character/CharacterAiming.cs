@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CharacterAiming : MonoBehaviour
 {
+    public Vector3 AimingDirection => m_AimingDirection;
+    
     [Header("Dependencies")]
     [SerializeField] private CharacterInput m_CharacterInput = null;
     [SerializeField] private Camera m_CameraReferential = null;

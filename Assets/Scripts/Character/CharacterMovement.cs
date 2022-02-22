@@ -23,8 +23,8 @@ public class CharacterMovement : MonoBehaviour
     private float m_CurrentSpeed = 0.0f;
     private Vector3 m_Translation = Vector3.zero;
 
-    private bool m_HasSuperSpeedOn = false;
     private float m_SuperSpeedTimer = 0.0f;
+    private bool m_HasSuperSpeedOn = false;
 
     private bool m_IsDashing = false;
     private float m_DashLoadingTimer = 0.0f;
@@ -32,6 +32,8 @@ public class CharacterMovement : MonoBehaviour
     private float m_DashRecoveryTimer = 0.0f;
 
     private CollisionFlags m_DefaultCollisionFlags;
+
+    private bool m_CanMove = true;
     
     private void Awake()
     {
@@ -73,6 +75,12 @@ public class CharacterMovement : MonoBehaviour
         }
         
         CheckResetSuperSpeed();
+        
+        if (!m_CanMove)
+        {
+            return;
+        }
+        
         TriggerSuperSpeed();
         UpdateCurrentSpeed();
         
