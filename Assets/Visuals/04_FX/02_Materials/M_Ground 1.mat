@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Ground 1
-  m_Shader: {fileID: -6465566751694194690, guid: 37699d4042fb1c74282e37a424c5bbde, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f895fc580847c7f46baac9a44a5c71d0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -37,10 +37,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _EdgeSmooth: 0
+    - _GradientIntensity: 1.6
+    - _GradientStrength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _Color: {r: 5.3403134, g: 5.3403134, b: 5.3403134, a: 1}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8328510844207279401
 MonoBehaviour:
