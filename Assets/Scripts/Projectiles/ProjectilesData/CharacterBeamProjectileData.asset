@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86b3cbf9068b3a240a0ce2f62ca320fd, type: 3}
-  m_Name: RangeAbilityData
+  m_Script: {fileID: 11500000, guid: 38627cacb81cbf04b99c6749dbd5776a, type: 3}
+  m_Name: CharacterBeamProjectileData
   m_EditorClassIdentifier: 
-  DelayBetweenShoot: 0.75
+  Damage: 25
+  LifeTime: 0.52
+  Speed: 20
+  DetectionRadius: 1

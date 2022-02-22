@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 129891633}
   - component: {fileID: 129891635}
   - component: {fileID: 129891634}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CameraBoundaries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,7 +663,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-190642
+  m_Name: pb_Mesh132392
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7672,6 +7672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 9176291708253178515, guid: a5594f87b72b22749bcd40bab3281eb1, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5594f87b72b22749bcd40bab3281eb1, type: 3}
 --- !u!4 &1029658528 stripped
@@ -7679,8 +7683,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8364147801872617513, guid: a5594f87b72b22749bcd40bab3281eb1, type: 3}
   m_PrefabInstance: {fileID: 1029658527}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1029658531
-MeshCollider:
+--- !u!65 &1029658529
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7689,10 +7693,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7668504476827530174, guid: 40b5a50a5bd049247acdcee6fe85152f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 15.340152, y: 1.5157256, z: 15.341947}
+  m_Center: {x: -0.00048675537, y: -0.6558567, z: -0.00009994507}
 --- !u!1 &1054249131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7336696523621540147, guid: 82a2617d547bdd54d918f652b3992eeb, type: 3}
@@ -7987,7 +7990,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7759336, y: 1}
+    m_SensorSize: {x: 1.7784091, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
