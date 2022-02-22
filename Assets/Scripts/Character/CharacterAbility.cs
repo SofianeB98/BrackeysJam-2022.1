@@ -21,7 +21,13 @@ public class CharacterAbility : MonoBehaviour
         if (m_CharacterInput == null)
             m_CharacterInput = GetComponent<CharacterInput>();
     }
-
+    
+    private void Start()
+    {
+        if (m_CameraReferential == null)
+            m_CameraReferential = Camera.main.transform; 
+    }
+    
     private void OnEnable()
     {
         m_CharacterInput.RangeAbilityEvent += TriggerRangeAbility;

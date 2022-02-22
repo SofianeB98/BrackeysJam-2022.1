@@ -11,6 +11,7 @@ public class CharacterInput : MonoBehaviour, PlayerInputs.IPlayerActions
     
     
     public event Action<Vector2> MoveEvent = null;
+    public event Action<Vector2, bool> AimingEvent = null;
     public event Action DashEvent = null;
     public event Action MeleeAbilityEvent = null;
     public event Action<bool> RangeAbilityEvent = null;
@@ -49,8 +50,7 @@ public class CharacterInput : MonoBehaviour, PlayerInputs.IPlayerActions
 
     public void OnAiming(InputAction.CallbackContext context)
     {
-        Debug.Log(context.control.device);
-        Debug.Log(context.ReadValue<Vector2>());
+        AimingEvent?.Invoke(context.ReadValue<Vector2>(), m_UseGamepad);
     }
 
     public void OnDash(InputAction.CallbackContext context)
