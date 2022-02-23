@@ -45,13 +45,19 @@ public class CharacterAiming : MonoBehaviour
         m_CharacterInput.AimingEvent -= UpdateAiming;
     }
 
+    private void Update()
+    {
+        UpdatePlayerRotation();
+        UpdatePlayerAnimation();
+    }
+
     private void UpdateAimingByGamepad(Vector2 dir)
     {
         Vector3 dir3D = new Vector3(dir.x, 0.0f, dir.y).normalized;
         Quaternion qt = Quaternion.Euler(0.0f, m_CameraReferential.transform.eulerAngles.y, 0.0f);
         m_AimingDirection = qt * dir3D;
         m_AimingDirection.Normalize();
-        transform.rotation = Quaternion.LookRotation(m_AimingDirection.sqrMagnitude > Mathf.Epsilon ? m_AimingDirection : m_CharacterController.velocity.normalized, Vector3.up);
+        UpdatePlayerRotation();
     }
     
     private void UpdateAimingByMouse(Vector2 screenPos)
@@ -65,7 +71,32 @@ public class CharacterAiming : MonoBehaviour
         position.y = 0;
         point.y = 0;
         m_AimingDirection = (point - position).normalized;
-        transform.rotation = Quaternion.LookRotation(m_AimingDirection.sqrMagnitude > Mathf.Epsilon ? m_AimingDirection : m_CharacterController.velocity.normalized, Vector3.up);
+    }
+
+    private void UpdatePlayerRotation()
+    {
+        if (m_AimingDirection.sqrMagnitude > Mathf.Epsilon)
+            transform.rotation = Quaternion.LookRotation(m_AimingDirection, Vector3.up);
+        else if (m_CharacterController.velocity.sqrMagnitude > 0)
+            transform.rotation = Quaternion.LookRotation(m_CharacterController.velocity.normalized, Vector3.up);
+            
+    }
+
+    private void UpdatePlayerAnimation()
+    {
+        var direction = m_CharacterController.velocity.normalized;
+        var aiming = m_AimingDirection.normalized;
+        var angle = Vector3.Dot(direction,aiming);
+        angle = Mathf.Acos(angle) * Mathf.Rad2Deg * Mathf.Sign(angle);
+
+        angle = angle < 0 ? 360.0f + angle : 360.0f - angle;
+        Debug.Log("angle = " + angle);
+
+        Quaternion qt = Quaternion.Euler(0.0f, angle, 0.0f);
+        var dirToLook = qt * Vector3.forward;
+
+        m_CharacterAnimator.SetFloat("BlendX", dirToLook.x);
+        m_CharacterAnimator.SetFloat("BlendY", dirToLook.z);
     }
     
     #region Callbacks
@@ -76,19 +107,6 @@ public class CharacterAiming : MonoBehaviour
             UpdateAimingByGamepad(dir);
         else
             UpdateAimingByMouse(dir);
-
-        var direction = m_CharacterController.velocity.normalized;
-        var aiming = m_AimingDirection.normalized;
-        var angle = Vector3.Dot(direction,aiming);
-        angle = Mathf.Acos(angle) * Mathf.Rad2Deg * Mathf.Sign(angle);
-
-        var dirToLook = (direction - aiming).normalized;
-        dirToLook.y = 0;
-        Quaternion qt = Quaternion.Euler(0.0f, angle, 0.0f);
-        dirToLook = qt * direction;
-
-        m_CharacterAnimator.SetFloat("BlendX", dirToLook.x);
-        m_CharacterAnimator.SetFloat("BlendY", dirToLook.z);
     }
 
     #endregion
