@@ -49,6 +49,7 @@ MonoBehaviour:
   m_IgnoreLayer:
     serializedVersion: 2
     m_Bits: 704
+  m_Effect: {fileID: 8507023321796607076}
 --- !u!1001 &4220775790458899677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56,9 +57,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4409553192158743832}
     m_Modifications:
+    - target: {fileID: 5520341787546841278, guid: 4789d4982f6fcb44c835dc56a0c609ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5520341787901356128, guid: 4789d4982f6fcb44c835dc56a0c609ba, type: 3}
       propertyPath: m_Name
       value: Blade_Beam
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520341787901356128, guid: 4789d4982f6fcb44c835dc56a0c609ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5520341787901356129, guid: 4789d4982f6fcb44c835dc56a0c609ba, type: 3}
       propertyPath: m_RootOrder
@@ -106,6 +115,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4789d4982f6fcb44c835dc56a0c609ba, type: 3}
+--- !u!198 &8507023321796607076 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5520341787546841273, guid: 4789d4982f6fcb44c835dc56a0c609ba, type: 3}
+  m_PrefabInstance: {fileID: 4220775790458899677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8507023322075489468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5520341787901356129, guid: 4789d4982f6fcb44c835dc56a0c609ba, type: 3}
