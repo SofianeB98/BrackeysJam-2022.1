@@ -191,6 +191,17 @@
                 },
                 {
                     "name": "",
+                    "id": "15d1ae91-288f-4043-85df-2c26b346c8cb",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cd2ff1fd-6365-4f75-98cb-82450b48713e",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
