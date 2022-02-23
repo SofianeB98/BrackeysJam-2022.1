@@ -16,6 +16,9 @@ public class CharacterAiming : MonoBehaviour
     private Vector3 m_AimingDirection = Vector3.forward;
     private Plane m_Plane;
     
+    private readonly int animatorBlendX = Animator.StringToHash("BlendX");
+    private readonly int animatorBlendY = Animator.StringToHash("BlendY");
+
     private void Awake()
     {
         if (m_CharacterController == null)
@@ -90,13 +93,12 @@ public class CharacterAiming : MonoBehaviour
         angle = Mathf.Acos(angle) * Mathf.Rad2Deg * Mathf.Sign(angle);
 
         angle = angle < 0 ? 360.0f + angle : 360.0f - angle;
-        Debug.Log("angle = " + angle);
 
         Quaternion qt = Quaternion.Euler(0.0f, angle, 0.0f);
         var dirToLook = qt * Vector3.forward;
 
-        m_CharacterAnimator.SetFloat("BlendX", dirToLook.x);
-        m_CharacterAnimator.SetFloat("BlendY", dirToLook.z);
+        m_CharacterAnimator.SetFloat(animatorBlendX, dirToLook.x);
+        m_CharacterAnimator.SetFloat(animatorBlendY, dirToLook.z);
     }
     
     #region Callbacks
