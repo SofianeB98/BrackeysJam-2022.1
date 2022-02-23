@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterProjectile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
+    public event Action<Transform> CollisionDetectedEvent;
+    
     [Header("Projectile Data")] 
     [SerializeField] private ProjectileData m_ProjectileData;
     [SerializeField] private LayerMask m_IgnoreLayer;
@@ -50,7 +52,7 @@ public class CharacterProjectile : MonoBehaviour
         for (int i = 0; i < cols.Length; i++)
         {
             Debug.Log("COLLIDE : " + cols[i].gameObject.name);
-            // if (cols[i].TryGetcomponent())
+            CollisionDetectedEvent?.Invoke(cols[i].transform);
         }
         
         DestroyProjectile();

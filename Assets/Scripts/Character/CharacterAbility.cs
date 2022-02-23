@@ -25,7 +25,7 @@ public class CharacterAbility : MonoBehaviour
     
     [Header("Range Ability")]
     [SerializeField] private CharacterRangeAbilityData m_RangeAbilityData;
-    [SerializeField] private CharacterProjectile m_Projectile;
+    [SerializeField] private Projectile m_Projectile;
 
     private AbilityState m_CurrentAbilityState = AbilityState.NONE;
     
