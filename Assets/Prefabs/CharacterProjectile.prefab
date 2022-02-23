@@ -50,6 +50,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 704
   m_Effect: {fileID: 8507023321796607076}
+  m_DetectionPointOffset: {x: 0, y: 0, z: 0}
+  m_CubeMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &4220775790458899677
 PrefabInstance:
   m_ObjectHideFlags: 0

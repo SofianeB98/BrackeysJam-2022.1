@@ -9,8 +9,10 @@ public class ProjectileData : ScriptableObject
     public float Damage = 25.0f;
     public float DistanceToReach = 20.0f;
     public float Speed = 15.0f;
-    public float DetectionRadius = 2.0f;
-    public float ProjectileHeight = 2.0f;
+    
+    [Header("Detection")]
+    public Vector3 DetectionSize = Vector3.one;
+    public Vector3 DetectionPointOffset = Vector3.zero;
     
     [Header("DONT TOUCH THESE FIELDS !")]
     [Tooltip("in seconds")] public float LifeTime = 1.0f;

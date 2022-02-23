@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38627cacb81cbf04b99c6749dbd5776a, type: 3}
   m_Name: CharacterBeamProjectileData
   m_EditorClassIdentifier: 
-  Damage: 25
-  LifeTime: 0.52
-  Speed: 20
+  Damage: 24.9
+  DistanceToReach: 9.2
+  Speed: 21.5
   DetectionRadius: 1
+  ProjectileHeight: 2
+  LifeTime: 0.42790696
