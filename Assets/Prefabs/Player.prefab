@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7152859260490973557}
   - component: {fileID: 4357105696765103350}
   - component: {fileID: 3479496615735331199}
+  - component: {fileID: 7481279033319392850}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -70,6 +71,7 @@ MonoBehaviour:
   m_CharacterInput: {fileID: 3479496615735331199}
   m_CameraReferential: {fileID: 0}
   m_CharacterController: {fileID: 8507595967052323328}
+  m_CharacterAnimator: {fileID: 0}
   m_MovementData: {fileID: 11400000, guid: 0bf089499ab47344d8931120b23a3667, type: 2}
   m_DashData: {fileID: 11400000, guid: 567627bda325f5b45840757cf0472abb, type: 2}
   m_IgnoreCollisionsLayer: 7
@@ -89,6 +91,7 @@ MonoBehaviour:
   m_CharacterInput: {fileID: 3479496615735331199}
   m_CameraReferential: {fileID: 0}
   m_CharacterController: {fileID: 8507595967052323328}
+  m_CharacterAnimator: {fileID: 0}
 --- !u!114 &4357105696765103350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +124,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UseGamepad: 0
+--- !u!114 &7481279033319392850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8507595967052323334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ad8cbd2feb4952b6639d361ffa0e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHealth: 100
 --- !u!1001 &2199755412559547148
 PrefabInstance:
   m_ObjectHideFlags: 0

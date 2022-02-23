@@ -7,19 +7,19 @@ public class CharacterMovement : MonoBehaviour
 {
     [Header("Dependencies")] [SerializeField]
     private CharacterInput m_CharacterInput = null;
+
     [SerializeField] private Transform m_CameraReferential = null;
     [SerializeField] private CharacterController m_CharacterController = null;
     [SerializeField] private Animator m_CharacterAnimator = null;
 
-    [Header("Movement Data")] 
-    [SerializeField] private CharacterMovementData m_MovementData;
+    [Header("Movement Data")] [SerializeField]
+    private CharacterMovementData m_MovementData;
 
-    [Header("Dash Data")] 
-    [SerializeField] private CharacterDashData m_DashData;
+    [Header("Dash Data")] [SerializeField] private CharacterDashData m_DashData;
     [SerializeField] private int m_IgnoreCollisionsLayer = 7;
     [SerializeField] private int m_DefaultLayer = 6;
-    
-    
+
+
     private Vector3 m_CurrentDirection = Vector3.zero;
     private float m_CurrentSpeed = 0.0f;
     private Vector3 m_Translation = Vector3.zero;
@@ -36,7 +36,9 @@ public class CharacterMovement : MonoBehaviour
 
     private bool m_CanMove = true;
     private bool m_IsMoving = false;
-    
+    private readonly int m_AnimIsMoving = Animator.StringToHash("IsMoving");
+    private readonly int m_AnimIsDashing = Animator.StringToHash("IsDashing");
+
     private void Awake()
     {
         if (m_CharacterController == null)
@@ -75,26 +77,30 @@ public class CharacterMovement : MonoBehaviour
         else
             m_IsMoving = false;
 
-        m_CharacterAnimator.SetBool("isMoving", m_IsMoving);
-
         if (m_IsDashing)
         {
             ProcessDash();
-            return;
         }
-        
-        CheckResetSuperSpeed();
-        
-        if (!m_CanMove)
+        else
         {
-            return;
+            CheckResetSuperSpeed();
+
+            if (m_CanMove)
+            {
+                TriggerSuperSpeed();
+                UpdateCurrentSpeed();
+
+                m_CharacterController.Move(m_Translation * (m_CurrentSpeed * Time.deltaTime));
+            }
         }
 
-        
-        TriggerSuperSpeed();
-        UpdateCurrentSpeed();
-        
-        m_CharacterController.Move(m_Translation * (m_CurrentSpeed * Time.deltaTime));
+        UpdateAnimator();
+    }
+
+    private void UpdateAnimator()
+    {
+        m_CharacterAnimator.SetBool(m_AnimIsDashing, m_IsDashing);
+        m_CharacterAnimator.SetBool(m_AnimIsMoving, m_IsMoving);
     }
 
     private void ProcessDash()
@@ -114,12 +120,12 @@ public class CharacterMovement : MonoBehaviour
                 m_CurrentDashDuration = 0f;
                 m_DashLoadingTimer = 0f;
             }
-            
+
             m_CharacterController.Move(m_Translation * (m_CurrentSpeed * Time.deltaTime));
             m_DashRecoveryTimer += Time.deltaTime;
             return;
         }
-        
+
         m_CharacterController.Move(m_Translation * (m_DashData.DashSpeed * Time.deltaTime));
         m_CurrentDashDuration += Time.deltaTime;
     }
@@ -137,7 +143,8 @@ public class CharacterMovement : MonoBehaviour
         if (!m_HasSuperSpeedOn)
             return;
 
-        if ((m_CurrentDirection.sqrMagnitude > Mathf.Epsilon && m_CurrentSpeed < m_MovementData.SuperSpeed) || m_CurrentSpeed <= 0f)
+        if ((m_CurrentDirection.sqrMagnitude > Mathf.Epsilon && m_CurrentSpeed < m_MovementData.SuperSpeed) ||
+            m_CurrentSpeed <= 0f)
         {
             m_HasSuperSpeedOn = false;
             m_SuperSpeedTimer = 0f;
@@ -183,8 +190,7 @@ public class CharacterMovement : MonoBehaviour
             Time.deltaTime * speedTarget / m_MovementData.AccelDuration);
     }
 
-    
-    
+
     #region Callbacks
 
     /// <summary>
@@ -197,7 +203,7 @@ public class CharacterMovement : MonoBehaviour
         Quaternion qt = Quaternion.Euler(0.0f, m_CameraReferential.eulerAngles.y, 0.0f);
         m_CurrentDirection = qt * dir3D;
         m_CurrentDirection.Normalize();
-        
+
         if (!m_IsDashing)
             m_Translation = m_CurrentDirection.sqrMagnitude > 0 ? m_CurrentDirection : m_Translation;
     }
@@ -209,12 +215,15 @@ public class CharacterMovement : MonoBehaviour
     {
         if (m_IsDashing)
             return;
-        
+
         m_IsDashing = true;
         gameObject.layer = m_IgnoreCollisionsLayer;
         m_DashRecoveryTimer = 0f;
         m_CurrentDashDuration = 0f;
         m_DashLoadingTimer = Time.time + m_DashData.DashLoadDuration;
+
+        CharacterEvents.TriggerInvicible?.Invoke(m_DashData.InvincibleDuration);
     }
+
     #endregion
 }

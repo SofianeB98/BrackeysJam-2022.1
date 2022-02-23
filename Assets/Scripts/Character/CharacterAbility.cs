@@ -82,8 +82,9 @@ public class CharacterAbility : MonoBehaviour
         if (m_RangeAbilityTimer < Time.time)
         {
             m_RangeAbilityTimer = Time.time + m_RangeAbilityData.DelayBetweenShoot;
-            Instantiate(m_Projectile, transform.position,
+            Projectile p = Instantiate(m_Projectile, transform.position,
                 Quaternion.LookRotation(m_CharacterAiming.AimingDirection, Vector3.up));
+            p.CollisionDetectedEvent += ProjectileCollideWithSomething;
         }
     }
     
@@ -105,6 +106,14 @@ public class CharacterAbility : MonoBehaviour
 
     #region Callbacks
 
+    private void ProjectileCollideWithSomething(Transform oth, float projectileDamage)
+    {
+        if (!oth.TryGetComponent(out Health hp))
+            return;
+        
+        hp.ReduceHealth(projectileDamage);
+    }
+    
     private void TriggerCanNotPerformAbility(bool canPerform)
     {
         CancelCurrentAction();

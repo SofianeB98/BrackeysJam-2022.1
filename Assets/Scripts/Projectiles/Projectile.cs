@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public event Action<Transform> CollisionDetectedEvent;
+    public event Action<Transform, float> CollisionDetectedEvent;
     
     [Header("Projectile Data")] 
     [SerializeField] private ProjectileData m_ProjectileData;
@@ -52,7 +52,7 @@ public class Projectile : MonoBehaviour
         for (int i = 0; i < cols.Length; i++)
         {
             Debug.Log("COLLIDE : " + cols[i].gameObject.name);
-            CollisionDetectedEvent?.Invoke(cols[i].transform);
+            CollisionDetectedEvent?.Invoke(cols[i].transform, m_ProjectileData.Damage);
         }
         
         DestroyProjectile();

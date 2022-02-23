@@ -16,8 +16,8 @@ public class CharacterAiming : MonoBehaviour
     private Vector3 m_AimingDirection = Vector3.forward;
     private Plane m_Plane;
     
-    private readonly int animatorBlendX = Animator.StringToHash("BlendX");
-    private readonly int animatorBlendY = Animator.StringToHash("BlendY");
+    private readonly int m_AnimBlendX = Animator.StringToHash("BlendX");
+    private readonly int m_AnimBlendY = Animator.StringToHash("BlendY");
 
     private void Awake()
     {
@@ -87,6 +87,8 @@ public class CharacterAiming : MonoBehaviour
 
     private void UpdatePlayerAnimation()
     {
+        var sqrVelocity = m_CharacterController.velocity.sqrMagnitude;
+    
         var direction = m_CharacterController.velocity.normalized;
         var aiming = m_AimingDirection.normalized;
         var angle = Vector3.Dot(direction,aiming);
@@ -95,10 +97,10 @@ public class CharacterAiming : MonoBehaviour
         angle = angle < 0 ? 360.0f + angle : 360.0f - angle;
 
         Quaternion qt = Quaternion.Euler(0.0f, angle, 0.0f);
-        var dirToLook = qt * Vector3.forward;
+        var dirToLook = qt * Vector3.forward * (sqrVelocity > 0 ? 1f : 0f);
 
-        m_CharacterAnimator.SetFloat(animatorBlendX, dirToLook.x);
-        m_CharacterAnimator.SetFloat(animatorBlendY, dirToLook.z);
+        m_CharacterAnimator.SetFloat(m_AnimBlendX, dirToLook.x);
+        m_CharacterAnimator.SetFloat(m_AnimBlendY, dirToLook.z);
     }
     
     #region Callbacks
