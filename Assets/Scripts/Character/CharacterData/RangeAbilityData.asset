@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b3cbf9068b3a240a0ce2f62ca320fd, type: 3}
   m_Name: RangeAbilityData
   m_EditorClassIdentifier: 
-  DelayBetweenShoot: 0.75
+  DelayBetweenShoot: 0.5

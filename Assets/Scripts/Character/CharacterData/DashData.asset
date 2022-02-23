@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af1a32e3d3d8b04c9c72c9d1f7c5876, type: 3}
   m_Name: DashData
   m_EditorClassIdentifier: 
-  DashSpeed: 100
-  DashDistance: 15
-  DashDuration: 0.15
-  DashLoadDuration: 0.5
+  DashSpeed: 35
+  DashDistance: 6
+  DashLoadDuration: 0.09
   DashRecoveryDuration: 0.2
-  InvincibleDuration: 1
+  InvincibleDuration: 0.25
+  DashDuration: 0.17142858
