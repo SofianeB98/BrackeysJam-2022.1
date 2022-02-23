@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ef62ccb50221c4daba3631b37431fd, type: 3}
   m_Name: MovementData
   m_EditorClassIdentifier: 
-  Speed: 3
+  Speed: 8
   AccelDuration: 0.15
   DecelDuration: 0.05
-  SuperSpeed: 3
+  SuperSpeed: 8
   SuperSpeedUnlockTimer: 0.75
   DecelSuperSpeedDuration: 0.1
