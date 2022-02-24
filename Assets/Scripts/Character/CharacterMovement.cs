@@ -14,12 +14,13 @@ public class CharacterMovement : MonoBehaviour
 
     [Header("Movement Data")] [SerializeField]
     private CharacterMovementData m_MovementData;
+    [SerializeField] private bool m_EnableSuperSpeed = false;
 
     [Header("Dash Data")] [SerializeField] private CharacterDashData m_DashData;
     [SerializeField] private int m_IgnoreCollisionsLayer = 7;
     [SerializeField] private int m_DefaultLayer = 6;
-
-
+    
+    private Vector3 m_DashDirection = Vector3.forward;
     private Vector3 m_CurrentDirection = Vector3.zero;
     private float m_CurrentSpeed = 0.0f;
     private Vector3 m_Translation = Vector3.zero;
@@ -79,13 +80,14 @@ public class CharacterMovement : MonoBehaviour
         }
         else
         {
-            CheckResetSuperSpeed();
-            
+            m_DashDirection = m_CurrentDirection.sqrMagnitude > 0 ? m_CurrentDirection : m_DashDirection;
+            if (m_EnableSuperSpeed) CheckResetSuperSpeed();
+
             if (m_CanMove)
             {
                 m_Translation = m_CurrentDirection.sqrMagnitude > 0 ? m_CurrentDirection : m_Translation;
                 
-                TriggerSuperSpeed();
+                if (m_EnableSuperSpeed) TriggerSuperSpeed();
                 UpdateCurrentSpeed();
 
                 m_CharacterController.Move(m_Translation * (m_CurrentSpeed * Time.deltaTime));
@@ -126,7 +128,7 @@ public class CharacterMovement : MonoBehaviour
             return;
         }
 
-        m_CharacterController.Move(m_Translation * (m_DashData.DashSpeed * Time.deltaTime));
+        m_CharacterController.Move(m_DashDirection * (m_DashData.DashSpeed * Time.deltaTime));
         m_CurrentDashDuration += Time.deltaTime;
     }
 
@@ -212,7 +214,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (m_IsDashing)
             return;
-
+        
         m_IsDashing = true;
         gameObject.layer = m_IgnoreCollisionsLayer;
         m_DashRecoveryTimer = 0f;
