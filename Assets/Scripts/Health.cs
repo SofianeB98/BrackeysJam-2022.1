@@ -7,8 +7,10 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     public UnityEvent DeathEvent = null;
-    
+    public HealthEvent HealthUpdatedEvent = null;
+
     [SerializeField] private float m_StartingHealth = 100f;
+    
     public float StartingHealth
     {
         get { return m_StartingHealth; }
@@ -28,12 +30,19 @@ public class Health : MonoBehaviour
         m_CurrentHealth = m_StartingHealth;
     }
 
+    private void Start()
+    {
+        HealthUpdatedEvent?.Invoke(this);
+    }
+
     public virtual void ReduceHealth(float amount)
     {
         if (m_IsDead)
             return;
         
         m_CurrentHealth -= amount;
+        HealthUpdatedEvent?.Invoke(this);
+        
         if (m_CurrentHealth <= 0)
             Death();
     }
@@ -43,4 +52,10 @@ public class Health : MonoBehaviour
         m_IsDead = true;
         DeathEvent?.Invoke();
     }
+}
+
+[Serializable]
+public class HealthEvent : UnityEvent<Health>
+{
+    
 }

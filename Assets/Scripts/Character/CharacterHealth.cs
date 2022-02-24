@@ -24,7 +24,7 @@ public class CharacterHealth : Health
         
         if (m_InvincibleTime > Time.time)
             return;
-
+        
         m_IsInvincible = false;
     }
 
