@@ -9,7 +9,17 @@ public class Health : MonoBehaviour
     public UnityEvent DeathEvent = null;
     
     [SerializeField] private float m_StartingHealth = 100f;
+    public float StartingHealth
+    {
+        get { return m_StartingHealth; }
+    }
+    
     private float m_CurrentHealth;
+
+    public float CurrentHealth
+    {
+        get { return m_CurrentHealth; }
+    }
 
     private bool m_IsDead = false;
     

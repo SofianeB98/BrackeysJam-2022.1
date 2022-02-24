@@ -12,6 +12,8 @@ public class FSMState : ScriptableObject
     [Header("Debug")]
     public Color m_DebugColor = Color.red;
 
+    [HideInInspector] public bool TriggerTransition = false;
+    
     public void UpdateState(FSMController fsmController)
     {
         ExecuteActions(fsmController);
