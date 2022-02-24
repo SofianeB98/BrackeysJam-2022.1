@@ -30,6 +30,11 @@ public class CharacterAnimationEventTrigger : MonoBehaviour
     {
         m_CharacterAbility.TriggerExitComboDelay();
     }
+
+    public void TriggerEndCombo()
+    {
+        m_CharacterAbility.TriggerEndCombo();
+    }
     
     public void LaunchProjectile()
     {

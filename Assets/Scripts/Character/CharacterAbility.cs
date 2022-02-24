@@ -31,6 +31,7 @@ public class CharacterAbility : MonoBehaviour
     private bool m_TriggerExitComboDelay = false;
     private bool m_CanTriggerExit = false;
     private float m_ExitComboDelay = 0f;
+    private float m_CurrentComboPercent = 0f;
 
     [Header("Range Ability")] [SerializeField]
     private CharacterRangeAbilityData m_RangeAbilityData;
@@ -114,6 +115,7 @@ public class CharacterAbility : MonoBehaviour
             m_CharacterAnimator.SetTrigger(cancelMeleeTrigger);
             m_TriggerExitComboDelay = false;
             m_CurrentAbilityState = AbilityState.NONE;
+            m_CurrentComboPercent = 0f;
         }
     }
 
@@ -143,6 +145,7 @@ public class CharacterAbility : MonoBehaviour
                 m_TriggerExitComboDelay = false;
                 m_CanTriggerExit = false;
                 m_ExitComboDelay = Mathf.Infinity;
+                m_CurrentComboPercent = 0f;
                 break;
             case AbilityState.RANGE:
                 m_CharacterAnimator.ResetTrigger(rangeAttackTrigger);
@@ -180,6 +183,11 @@ public class CharacterAbility : MonoBehaviour
 
         CancelCurrentAction(AbilityState.MELEE);
 
+        if (m_CurrentAbilityState == AbilityState.MELEE)
+            m_CurrentComboPercent += m_MeleeAbilityData.AdditionnalDamageComboPercent;
+        else
+            m_CurrentComboPercent = 0f;
+        
         m_TriggerExitComboDelay = false;
         m_CanTriggerExit = false;
         m_ExitComboDelay = Mathf.Infinity;
@@ -227,7 +235,7 @@ public class CharacterAbility : MonoBehaviour
 
         foreach (var c in cols)
             if (c.TryGetComponent(out Health h))
-                h.ReduceHealth(m_MeleeAbilityData.Damage);
+                h.ReduceHealth(m_MeleeAbilityData.Damage + m_MeleeAbilityData.Damage * m_CurrentComboPercent * 0.01f);
     }
 
     public void TriggerExitComboDelay()
@@ -241,7 +249,15 @@ public class CharacterAbility : MonoBehaviour
         m_TriggerExitComboDelay = true;
         m_ExitComboDelay = Time.time + m_MeleeAbilityData.DelayBeforeExitCombo;
     }
-
+    
+    public void TriggerEndCombo()
+    {
+        m_TriggerExitComboDelay = false;
+        m_CanTriggerExit = false;
+        m_CurrentComboPercent = 0f;
+        m_CurrentAbilityState = AbilityState.NONE;
+    }
+    
     public void LaunchProjectile()
     {
         Projectile p = Instantiate(m_Projectile, transform.position,
