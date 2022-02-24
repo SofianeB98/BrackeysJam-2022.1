@@ -35,8 +35,6 @@ public class CharacterMovement : MonoBehaviour
     private CollisionFlags m_DefaultCollisionFlags;
 
     private bool m_CanMove = true;
-    private bool m_IsMoving = false;
-    private readonly int m_AnimIsMoving = Animator.StringToHash("IsMoving");
     private readonly int m_AnimIsDashing = Animator.StringToHash("IsDashing");
     private readonly int isDashing = Animator.StringToHash("IsDashing");
 
@@ -63,21 +61,18 @@ public class CharacterMovement : MonoBehaviour
     {
         m_CharacterInput.MoveEvent += UpdateMove;
         m_CharacterInput.DashEvent += TriggerDash;
+        CharacterEvents.UpdateCanMoveEvent += TriggerCanMove;
     }
 
     private void OnDisable()
     {
         m_CharacterInput.MoveEvent -= UpdateMove;
         m_CharacterInput.DashEvent -= TriggerDash;
+        CharacterEvents.UpdateCanMoveEvent -= TriggerCanMove;
     }
 
     private void Update()
     {
-        if (m_CharacterController.velocity.magnitude > 0)
-            m_IsMoving = true;
-        else
-            m_IsMoving = false;
-
         if (m_IsDashing)
         {
             ProcessDash();
@@ -86,10 +81,10 @@ public class CharacterMovement : MonoBehaviour
         {
             CheckResetSuperSpeed();
             
-            m_Translation = m_CurrentDirection.sqrMagnitude > 0 ? m_CurrentDirection : m_Translation;
-            
             if (m_CanMove)
             {
+                m_Translation = m_CurrentDirection.sqrMagnitude > 0 ? m_CurrentDirection : m_Translation;
+                
                 TriggerSuperSpeed();
                 UpdateCurrentSpeed();
 
@@ -103,7 +98,6 @@ public class CharacterMovement : MonoBehaviour
     private void UpdateAnimator()
     {
         m_CharacterAnimator.SetBool(m_AnimIsDashing, m_IsDashing);
-        m_CharacterAnimator.SetBool(m_AnimIsMoving, m_IsMoving);
     }
 
     private void ProcessDash()
@@ -122,7 +116,7 @@ public class CharacterMovement : MonoBehaviour
                 m_DashRecoveryTimer = 0f;
                 m_CurrentDashDuration = 0f;
                 m_DashLoadingTimer = 0f;
-                
+
                 m_CharacterAnimator.SetBool(isDashing, m_IsDashing);
                 CharacterEvents.DashStateUpdate?.Invoke(m_IsDashing);
             }
@@ -230,5 +224,11 @@ public class CharacterMovement : MonoBehaviour
         CharacterEvents.TriggerInvicible?.Invoke(m_DashData.InvincibleDuration);
     }
 
+    private void TriggerCanMove(bool val)
+    {
+        m_CanMove = val;
+        m_CurrentSpeed = 0f;
+    }
+    
     #endregion
 }
