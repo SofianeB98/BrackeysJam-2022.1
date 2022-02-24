@@ -38,6 +38,7 @@ public class CharacterMovement : MonoBehaviour
     private bool m_IsMoving = false;
     private readonly int m_AnimIsMoving = Animator.StringToHash("IsMoving");
     private readonly int m_AnimIsDashing = Animator.StringToHash("IsDashing");
+    private readonly int isDashing = Animator.StringToHash("IsDashing");
 
     private void Awake()
     {
@@ -84,7 +85,9 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             CheckResetSuperSpeed();
-
+            
+            m_Translation = m_CurrentDirection.sqrMagnitude > 0 ? m_CurrentDirection : m_Translation;
+            
             if (m_CanMove)
             {
                 TriggerSuperSpeed();
@@ -119,6 +122,9 @@ public class CharacterMovement : MonoBehaviour
                 m_DashRecoveryTimer = 0f;
                 m_CurrentDashDuration = 0f;
                 m_DashLoadingTimer = 0f;
+                
+                m_CharacterAnimator.SetBool(isDashing, m_IsDashing);
+                CharacterEvents.DashStateUpdate?.Invoke(m_IsDashing);
             }
 
             m_CharacterController.Move(m_Translation * (m_CurrentSpeed * Time.deltaTime));
@@ -203,9 +209,6 @@ public class CharacterMovement : MonoBehaviour
         Quaternion qt = Quaternion.Euler(0.0f, m_CameraReferential.eulerAngles.y, 0.0f);
         m_CurrentDirection = qt * dir3D;
         m_CurrentDirection.Normalize();
-
-        if (!m_IsDashing)
-            m_Translation = m_CurrentDirection.sqrMagnitude > 0 ? m_CurrentDirection : m_Translation;
     }
 
     /// <summary>
@@ -222,6 +225,8 @@ public class CharacterMovement : MonoBehaviour
         m_CurrentDashDuration = 0f;
         m_DashLoadingTimer = Time.time + m_DashData.DashLoadDuration;
 
+        m_CharacterAnimator.SetBool(isDashing, m_IsDashing);
+        CharacterEvents.DashStateUpdate?.Invoke(m_IsDashing);
         CharacterEvents.TriggerInvicible?.Invoke(m_DashData.InvincibleDuration);
     }
 

@@ -108,7 +108,13 @@ MonoBehaviour:
   m_CharacterAiming: {fileID: 7152859260490973557}
   m_CameraReferential: {fileID: 0}
   m_CharacterController: {fileID: 8507595967052323328}
+  m_CharacterAnimator: {fileID: 6278658651488742519}
   m_MeleeAbilityData: {fileID: 11400000, guid: 03fda6581f1f37f479870f3873f37ad6, type: 2}
+  m_BottomDetectionPoint: {fileID: 3515221058804775187}
+  m_UpDetectionPoint: {fileID: 3822462636574805460}
+  m_IgnoreLayer:
+    serializedVersion: 2
+    m_Bits: 1015
   m_RangeAbilityData: {fileID: 11400000, guid: 853c8cac9563568468ad949917f7f09f, type: 2}
   m_Projectile: {fileID: 4409553192158743812, guid: ab2185a8040e16842beac3a8e0c6cae2, type: 3}
 --- !u!114 &3479496615735331199
@@ -212,8 +218,43 @@ PrefabInstance:
     - {fileID: 5306752343915645854, guid: e310f6060973bbe4a8f7c981a0e58133, type: 3}
     - {fileID: 5306752343505280911, guid: e310f6060973bbe4a8f7c981a0e58133, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e310f6060973bbe4a8f7c981a0e58133, type: 3}
+--- !u!4 &3515221058804775187 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3337038720269103647, guid: e310f6060973bbe4a8f7c981a0e58133, type: 3}
+  m_PrefabInstance: {fileID: 2199755412559547148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3822462636574805460 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3137606378213099224, guid: e310f6060973bbe4a8f7c981a0e58133, type: 3}
+  m_PrefabInstance: {fileID: 2199755412559547148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6278658651481316919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5306752342222230843, guid: e310f6060973bbe4a8f7c981a0e58133, type: 3}
+  m_PrefabInstance: {fileID: 2199755412559547148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5445016262998720733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278658651481316919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f1da3295a737d478721189287a9409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CharacterAbility: {fileID: 4357105696765103350}
+  m_CharacterMovement: {fileID: 8507595967052323329}
+  m_CharacterAiming: {fileID: 7152859260490973557}
 --- !u!4 &6278658651481539095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5306752342222653723, guid: e310f6060973bbe4a8f7c981a0e58133, type: 3}
+  m_PrefabInstance: {fileID: 2199755412559547148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6278658651488742519 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5306752342231721851, guid: e310f6060973bbe4a8f7c981a0e58133, type: 3}
   m_PrefabInstance: {fileID: 2199755412559547148}
   m_PrefabAsset: {fileID: 0}

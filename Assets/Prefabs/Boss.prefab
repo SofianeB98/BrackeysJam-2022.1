@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7759055777870874906}
   - component: {fileID: 2593402176199859228}
   - component: {fileID: 6561260046447691760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,6 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f53ece8c24f7c40a0a3e2ee05cec87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
   m_StartingHealth: 100
 --- !u!1001 &8764723094226951778
 PrefabInstance:
