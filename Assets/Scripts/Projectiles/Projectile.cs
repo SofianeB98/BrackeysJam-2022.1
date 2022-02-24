@@ -11,7 +11,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private ProjectileData m_ProjectileData;
     [SerializeField] private LayerMask m_IgnoreLayer;
     [SerializeField] private ParticleSystem m_Effect;
-
+    [SerializeField] private bool m_IsNotReal = false;
+    
     [Header("Gizmo")] 
     [SerializeField] private Mesh m_CubeMesh;
     
@@ -29,6 +30,9 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        if (m_IsNotReal)
+            return;
+        
         Detect();
         Move();
     }
@@ -75,6 +79,9 @@ public class Projectile : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (m_IsNotReal)
+            return;
+        
         Gizmos.color = Color.cyan;
         
         if (m_CubeMesh != null)
