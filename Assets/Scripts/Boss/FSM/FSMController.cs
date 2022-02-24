@@ -5,11 +5,25 @@ using UnityEngine;
 
 public class FSMController : MonoBehaviour
 {
+    [Header("FSM")]
     [SerializeField] private FSMState m_InitialState;
     [SerializeField] private FSMState m_RemainingState;
-    
     private FSMState m_CurrentState;
+    public FSMState CurrentState => m_CurrentState;
     private bool m_IsActive = false;
+
+    [Header("IA Stats")] 
+    [SerializeField] private Health m_Health;
+    public Health Health
+    {
+        get { return m_Health; }
+    }
+
+    private void Awake()
+    {
+        if (m_Health == null)
+            m_Health = GetComponent<Health>();
+    }
 
     private void Start()
     {
@@ -33,11 +47,8 @@ public class FSMController : MonoBehaviour
         if (targetState == null || (m_RemainingState != null && targetState == m_RemainingState))
             return;
 
-        // Exit current state
-        
+        m_CurrentState.TriggerTransition = false;
         m_CurrentState = targetState;
-        
-        // Enter new current state
     }
     
     private void OnDrawGizmos()

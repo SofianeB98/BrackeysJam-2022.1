@@ -12,6 +12,8 @@ public class FSMState : ScriptableObject
     [Header("Debug")]
     public Color m_DebugColor = Color.red;
 
+    [HideInInspector] public bool TriggerTransition = false;
+    
     public void UpdateState(FSMController fsmController)
     {
         ExecuteActions(fsmController);
@@ -30,7 +32,7 @@ public class FSMState : ScriptableObject
     {
         foreach (var t in m_Transitions)
         {
-            fsmController.TransitionToState(t.Condition.Decide(fsmController) ? t.TrueState : t.FalseState);
+            fsmController.TransitionToState(t.GetConditionsFilled(fsmController) ? t.TrueState : t.FalseState);
         }
     }
 }
