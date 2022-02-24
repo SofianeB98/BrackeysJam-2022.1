@@ -32,7 +32,7 @@ public class FSMState : ScriptableObject
     {
         foreach (var t in m_Transitions)
         {
-            fsmController.TransitionToState(t.Condition.Decide(fsmController) ? t.TrueState : t.FalseState);
+            fsmController.TransitionToState(t.GetConditionsFilled(fsmController) ? t.TrueState : t.FalseState);
         }
     }
 }

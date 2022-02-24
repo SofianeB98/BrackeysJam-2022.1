@@ -35,6 +35,11 @@ public class CharacterAnimationEventTrigger : MonoBehaviour
     {
         m_CharacterAbility.TriggerEndCombo();
     }
+
+    public void TriggerAskedNextAttack()
+    {
+        m_CharacterAbility.TriggerAskedNextAttack();
+    }
     
     public void LaunchProjectile()
     {

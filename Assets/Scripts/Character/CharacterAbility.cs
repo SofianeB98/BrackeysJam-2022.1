@@ -33,6 +33,7 @@ public class CharacterAbility : MonoBehaviour
     private bool m_TriggerExitComboDelay = false;
     private bool m_CanTriggerExit = false;
     private bool m_MeleeAbilityAvailable = true;
+    private bool m_AskedNextMeleeAttack = false;
     
     [Header("Range Ability")] [SerializeField]
     private CharacterRangeAbilityData m_RangeAbilityData;
@@ -44,7 +45,7 @@ public class CharacterAbility : MonoBehaviour
     private readonly int meleeAttackTrigger = Animator.StringToHash("MeleeAttackTrigger");
     private readonly int rangeAttackTrigger = Animator.StringToHash("RangeAttackTrigger");
     private readonly int cancelMeleeTrigger = Animator.StringToHash("CancelMeleeTrigger");
-    private readonly int exitCombo = Animator.StringToHash("ExitCombo");
+    private readonly int nextMeleeAttackTrigger = Animator.StringToHash("NextMeleeAttackTrigger");
 
     private void Awake()
     {
@@ -150,10 +151,13 @@ public class CharacterAbility : MonoBehaviour
             case AbilityState.MELEE:
                 m_TriggerExitComboDelay = false;
                 m_CanTriggerExit = false;
+                m_AskedNextMeleeAttack = false;
+                
                 m_ExitComboDelay = Mathf.Infinity;
                 m_CurrentComboPercent = 0f;
                 
                 m_CharacterAnimator.ResetTrigger(meleeAttackTrigger);
+                m_CharacterAnimator.ResetTrigger(nextMeleeAttackTrigger);
                 m_CharacterAnimator.SetTrigger(cancelMeleeTrigger);
                 
                 CharacterEvents.UpdateCanMoveEvent?.Invoke(true);
@@ -182,6 +186,7 @@ public class CharacterAbility : MonoBehaviour
         CancelCurrentAction(next);
         m_CharacterAnimator.ResetTrigger(meleeAttackTrigger);
         m_CharacterAnimator.ResetTrigger(rangeAttackTrigger);
+        m_CharacterAnimator.ResetTrigger(nextMeleeAttackTrigger);
         m_CurrentAbilityState = next;
     }
 
@@ -195,9 +200,15 @@ public class CharacterAbility : MonoBehaviour
         CancelCurrentAction(AbilityState.MELEE);
 
         if (m_CurrentAbilityState == AbilityState.MELEE)
+        {
             m_CurrentComboPercent += m_MeleeAbilityData.AdditionnalDamageComboPercent;
+            m_AskedNextMeleeAttack = true;
+        }
         else
+        {
             m_CurrentComboPercent = 0f;
+            m_AskedNextMeleeAttack = false;
+        }
         
         m_TriggerExitComboDelay = false;
         m_CanTriggerExit = false;
@@ -259,6 +270,8 @@ public class CharacterAbility : MonoBehaviour
         if (!m_CanTriggerExit)
             return;
         
+        m_AskedNextMeleeAttack = false;
+        m_CharacterAnimator.ResetTrigger(nextMeleeAttackTrigger);
         m_TriggerExitComboDelay = true;
         m_ExitComboDelay = Time.time + m_MeleeAbilityData.DelayBeforeExitCombo;
     }
@@ -266,6 +279,7 @@ public class CharacterAbility : MonoBehaviour
     public void TriggerEndCombo()
     {
         m_TriggerExitComboDelay = false;
+        m_AskedNextMeleeAttack = false;
         m_CanTriggerExit = false;
         m_CurrentComboPercent = 0f;
         m_CurrentAbilityState = AbilityState.NONE;
@@ -275,8 +289,21 @@ public class CharacterAbility : MonoBehaviour
         
         m_CharacterAnimator.ResetTrigger(meleeAttackTrigger);
         m_CharacterAnimator.ResetTrigger(cancelMeleeTrigger);
+        m_CharacterAnimator.ResetTrigger(nextMeleeAttackTrigger);
+
         
         CharacterEvents.UpdateCanMoveEvent?.Invoke(true);
+    }
+
+    public void TriggerAskedNextAttack()
+    {
+        if (!m_AskedNextMeleeAttack)
+            return;
+
+        m_CharacterAnimator.ResetTrigger(meleeAttackTrigger);
+        m_AskedNextMeleeAttack = false;
+        m_CharacterAnimator.SetTrigger(nextMeleeAttackTrigger);
+
     }
     
     public void LaunchProjectile()
@@ -285,7 +312,7 @@ public class CharacterAbility : MonoBehaviour
             Quaternion.LookRotation(m_CharacterAiming.AimingDirection, Vector3.up));
         p.CollisionDetectedEvent += ProjectileCollideWithSomething;
     }
-
+    
     #endregion
 
     private void OnDrawGizmos()
