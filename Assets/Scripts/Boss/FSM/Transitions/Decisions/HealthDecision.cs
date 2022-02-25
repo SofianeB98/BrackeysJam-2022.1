@@ -10,7 +10,7 @@ public class HealthDecision : FSMDecision
     
     public override bool Decide(FSMController fsmController)
     {
-        var currentPercent = (fsmController.Health.CurrentHealth / fsmController.Health.StartingHealth) * 100.0f;
+        var currentPercent = (fsmController.Boss.Health.CurrentHealth / fsmController.Boss.Health.StartingHealth) * 100.0f;
         if (m_CurrentPercentSmallerOrEqualThreshold)
             return currentPercent <=
                    m_HealthThresholdPercent;

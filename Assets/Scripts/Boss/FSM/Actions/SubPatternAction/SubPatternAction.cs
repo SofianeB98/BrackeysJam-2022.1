@@ -10,10 +10,10 @@ public enum SubPatternActionState
 
 public abstract class SubPatternAction : ScriptableObject
 {
-    public abstract void OnEnter();
+    public abstract void OnEnter(FSMController fsmController);
 
     public abstract SubPatternActionState Execute(FSMController fsmController);
 
-    public abstract void OnEnd();
+    public abstract void OnEnd(FSMController fsmController);
 
 }

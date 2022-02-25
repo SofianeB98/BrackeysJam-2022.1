@@ -12,23 +12,14 @@ public class FSMController : MonoBehaviour
     public FSMState CurrentState => m_CurrentState;
     private bool m_IsActive = false;
 
-    [Header("IA Stats")] 
-    [SerializeField] private Health m_Health;
-    public Health Health
-    {
-        get { return m_Health; }
-    }
-
-    private void Awake()
-    {
-        if (m_Health == null)
-            m_Health = GetComponent<Health>();
-    }
-
+    [Header("IA Behavior")]
+    [SerializeField] private BossBehaviorManager m_Boss;
+    public BossBehaviorManager Boss => m_Boss;
+    
     private void Start()
     {
         m_IsActive = true;
-        m_CurrentState = m_InitialState;
+        TransitionToState(m_InitialState);
     }
 
     private void Update()
@@ -47,8 +38,11 @@ public class FSMController : MonoBehaviour
         if (targetState == null || (m_RemainingState != null && targetState == m_RemainingState))
             return;
 
-        m_CurrentState.TriggerTransition = false;
+        if (m_CurrentState != null)
+            m_CurrentState.TriggerTransition = false;
+        
         m_CurrentState = targetState;
+        m_CurrentState.OnEnterState(this);
     }
     
     private void OnDrawGizmos()

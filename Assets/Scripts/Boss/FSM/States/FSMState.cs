@@ -12,7 +12,16 @@ public class FSMState : ScriptableObject
     [Header("Debug")]
     public Color m_DebugColor = Color.red;
 
-    [HideInInspector] public bool TriggerTransition = false;
+    public bool TriggerTransition = false;
+
+    public void OnEnterState(FSMController fsmController)
+    {
+        TriggerTransition = false;
+        foreach (var act in m_Actions)
+        {
+            act.ResetAction(fsmController);
+        }
+    }
     
     public void UpdateState(FSMController fsmController)
     {
