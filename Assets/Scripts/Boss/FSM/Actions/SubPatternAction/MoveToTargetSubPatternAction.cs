@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MoveToPointSubPatternAction", menuName = "FSM/FSM Pattern Actions/New MoveToPointSubPatternAction", order = 0)]
-public class MoveToPointSubPatternAction : SubPatternAction
+[CreateAssetMenu(fileName = "MoveToTargetSubPatternAction", menuName = "FSM/FSM Pattern Actions/New MoveToTargetSubPatternAction", order = 0)]
+public class MoveToTargetSubPatternAction : SubPatternAction
 {
-    [SerializeField] private Vector3 m_PointToReach = Vector3.zero;
+    [SerializeField] private int m_UpdateDestinationEveryNFrame = 15;
     [SerializeField] private float m_DistanceThreshold = 1.0f;
     
     public override void OnEnter(FSMController fsmController)
     {
         fsmController.Boss.Agent.enabled = true;
         fsmController.Boss.Agent.isStopped = false;
-        fsmController.Boss.Agent.SetDestination(m_PointToReach);
+        fsmController.Boss.Agent.SetDestination(fsmController.Boss.Target.position);
     }
 
     public override SubPatternActionState Execute(FSMController fsmController)
     {
-        if (Vector3.Distance(fsmController.Boss.transform.position, m_PointToReach) <= m_DistanceThreshold)
+        if (Vector3.Distance(fsmController.Boss.transform.position, fsmController.Boss.Target.position) <= m_DistanceThreshold)
             return SubPatternActionState.ENDED;
+        
+        if (Time.frameCount % m_UpdateDestinationEveryNFrame == 0)
+            fsmController.Boss.Agent.SetDestination(fsmController.Boss.Target.position);
 
         return SubPatternActionState.PERFORMED;
     }
