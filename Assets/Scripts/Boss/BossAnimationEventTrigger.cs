@@ -22,12 +22,12 @@ public class BossAnimationEventTrigger : MonoBehaviour
 
     public void TriggerMeleeAttack()
     {
-        
+        m_BossBehaviorManager.TriggerMeleeAttack();
     }
 
     public void TriggerSwordCrossSlash()
     {
-        
+        m_BossBehaviorManager.TriggerSwordCrossSlash();
     }
     
     #endregion

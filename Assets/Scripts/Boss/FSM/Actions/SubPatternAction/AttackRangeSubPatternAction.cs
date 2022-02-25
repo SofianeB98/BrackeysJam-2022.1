@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "AttackRangeSubPatternAction", menuName = "FSM/FSM Pattern Actions/New AttackRangeSubPatternAction", order = 0)]
 public class AttackRangeSubPatternAction : SubPatternAction
 {
     [SerializeField] private AIProjectileParameter[] m_ProjectileParameters;

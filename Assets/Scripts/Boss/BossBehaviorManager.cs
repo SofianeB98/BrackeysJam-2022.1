@@ -1,15 +1,23 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BossBehaviorManager : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] private Animator m_Animator;
+    [SerializeField] private NavMeshAgent m_Agent;
+    
     public Animator Animator
     {
         get { return m_Animator; }
     }
 
+    public NavMeshAgent Agent
+    {
+        get { return m_Agent; }
+    }
+    
     [Header("Behaviors")] 
     [SerializeField] private BossEarthquakeBehavior m_BossEarthquakeBehavior;
     [SerializeField] private BossMeleeAtkBehavior m_BossMeleeAtkBehavior;
@@ -31,9 +39,15 @@ public class BossBehaviorManager : MonoBehaviour
     
     private void Awake()
     {
+        if (m_Animator == null)
+            m_Animator = GetComponentInChildren<Animator>();
+        
         if (m_Health == null)
             m_Health = GetComponent<Health>();
 
+        if (m_Agent == null)
+            m_Agent = GetComponent<NavMeshAgent>();
+        
         if (m_BossEarthquakeBehavior == null)
             m_BossEarthquakeBehavior = GetComponent<BossEarthquakeBehavior>();
         
