@@ -133,7 +133,6 @@ public class CharacterAbility : MonoBehaviour
         {
             m_CharacterAnimator.SetTrigger(rangeAttackTrigger);
             m_RangeAbilityTimer = Time.time + m_RangeAbilityData.DelayBetweenShoot;
-            this.GetComponent<Health>().ReduceHealth(15);
         }
     }
 
