@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class LifeBar : MonoBehaviour
 {
     [SerializeField] private Slider m_LifeSlider;
+    [SerializeField] private Slider m_LifeSliderPreview;
+    [SerializeField] private AnimationCurve easeLerp;
+    [SerializeField] float waitTime = 2f;
     private bool m_IsInitialized = false;
     
     public void UpdateSlider(Health hp)
@@ -13,11 +16,30 @@ public class LifeBar : MonoBehaviour
         if (!m_IsInitialized) Initialize(hp);
 
         m_LifeSlider.value = Mathf.Clamp(hp.CurrentHealth, 0f, hp.StartingHealth);
+        StartCoroutine("LerpPreviewHp");
+    }
+
+    IEnumerator LerpPreviewHp()
+    {
+        float elapsedTime = 0;
+        float waitTime = 1;
+        
+        while (elapsedTime < waitTime)
+        {
+            if (m_LifeSliderPreview != null)
+                m_LifeSliderPreview.value = Mathf.Lerp(m_LifeSliderPreview.value, m_LifeSlider.value, easeLerp.Evaluate(elapsedTime / waitTime));
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+        yield return null;
     }
 
     private void Initialize(Health hp)
     {
         m_IsInitialized = true;
         m_LifeSlider.maxValue = hp.StartingHealth;
+        m_LifeSliderPreview.maxValue = hp.StartingHealth;
     }
 }

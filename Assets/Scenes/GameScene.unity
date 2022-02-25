@@ -7415,6 +7415,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2501726760327031343, guid: 265dfb7aa1a21014a9d4b841b00d7def, type: 3}
+--- !u!114 &719337912 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4163372951872672530, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+  m_PrefabInstance: {fileID: 1132256698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &736265426 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9176291708253178515, guid: a5594f87b72b22749bcd40bab3281eb1, type: 3}
@@ -7862,6 +7873,94 @@ PrefabInstance:
     - target: {fileID: 3315035773559322206, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165648553229643880, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165648553229643880, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: waitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: m_LifeSliderPreview
+      value: 
+      objectReference: {fileID: 719337912}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].time
+      value: 0.59985566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[2].time
+      value: 0.94228804
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[3].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].value
+      value: 0.2334573
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[2].value
+      value: 0.3406962
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[3].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].inSlope
+      value: 0.61198694
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[2].inSlope
+      value: 0.84504616
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[3].inSlope
+      value: 13.056562
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].outSlope
+      value: 0.61198694
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[2].outSlope
+      value: 0.84504616
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[3].inWeight
+      value: 0.06373239
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[3].outSlope
+      value: 13.056562
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280851962894032477, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[2].outWeight
+      value: 0.29257235
       objectReference: {fileID: 0}
     - target: {fileID: 7991407176067929885, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8311,7 +8410,52 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].time
+      value: 0.94026196
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].value
+      value: 0.3115212
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[2].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].inSlope
+      value: 1.1162598
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[2].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].outSlope
+      value: 1.1162598
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[2].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: easeLerp.m_Curve.Array.data[1].outWeight
+      value: 0.51673555
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8440925985462767922, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
 --- !u!114 &1132256699 stripped
 MonoBehaviour:
@@ -8441,7 +8585,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7775891, y: 1}
+    m_SensorSize: {x: 1.7771536, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
