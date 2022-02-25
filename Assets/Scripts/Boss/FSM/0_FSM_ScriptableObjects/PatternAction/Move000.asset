@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1854977b479547eb8445b9d777f5a927, type: 3}
-  m_Name: RotateSubPatternAction
+  m_Script: {fileID: 11500000, guid: ecc3f41baf8d71841bbef631b23c87be, type: 3}
+  m_Name: Move000
   m_EditorClassIdentifier: 
-  m_DegreesToRotate: 90
-  m_TimeToReach: 2
-  m_RepeatCount: 1
-  m_DelayBeforeRepeat: 0
+  m_PointToReach: {x: 0, y: 0, z: 0}
+  m_DistanceThreshold: 1

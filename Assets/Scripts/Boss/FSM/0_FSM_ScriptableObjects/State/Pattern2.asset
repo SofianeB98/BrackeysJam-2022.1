@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f44bbf34ab7585f41924ec30542a6e44, type: 3}
-  m_Name: Monetat
+  m_Name: Pattern2
   m_EditorClassIdentifier: 
   m_Actions:
-  - {fileID: 11400000, guid: b5642c05b9cd75343aff53d42bbd7e00, type: 2}
+  - {fileID: 11400000, guid: 96846de807f706a4eb7031e309512e24, type: 2}
   m_Transitions:
   - Conditions:
     - {fileID: 11400000, guid: 3a2b53b00b38db74da58df3f9232ba22, type: 2}
-    TrueState: {fileID: 0}
-    FalseState: {fileID: 0}
+    TrueState: {fileID: 11400000, guid: 56044cb793c444f40b999414dce1a05b, type: 2}
+    FalseState: {fileID: 11400000, guid: 56044cb793c444f40b999414dce1a05b, type: 2}
   m_DebugColor: {r: 1, g: 0, b: 0, a: 1}
-  TriggerTransition: 1
+  TriggerTransition: 0
