@@ -33,7 +33,7 @@ public class CharacterAbility : MonoBehaviour
     private bool m_TriggerExitComboDelay = false;
     private bool m_CanTriggerExit = false;
     private bool m_MeleeAbilityAvailable = true;
-    private bool m_AskedNextMeleeAttack = false;
+    //private bool m_AskedNextMeleeAttack = false;
     
     [Header("Range Ability")] [SerializeField]
     private CharacterRangeAbilityData m_RangeAbilityData;
@@ -97,7 +97,7 @@ public class CharacterAbility : MonoBehaviour
             case AbilityState.CAN_NOT_PERFORM_ABILITY:
                 return;
             case AbilityState.MELEE:
-                MeleeAbility();
+                CheckMeleeAbilityExitCombo();
                 break;
             case AbilityState.RANGE:
                 RangeAbility();
@@ -107,11 +107,12 @@ public class CharacterAbility : MonoBehaviour
         }
     }
 
-    private void MeleeAbility()
+    private void CheckMeleeAbilityExitCombo()
     {
         if (!m_CanTriggerExit)
         {
             m_TriggerExitComboDelay = false;
+            m_ExitComboDelay = Mathf.Infinity;
             return;
         }
 
@@ -120,11 +121,8 @@ public class CharacterAbility : MonoBehaviour
 
         if (m_ExitComboDelay < Time.time)
         {
-            m_CharacterAnimator.SetTrigger(cancelMeleeTrigger);
-            m_TriggerExitComboDelay = false;
+            CancelCurrentAction(AbilityState.NONE);
             m_CurrentAbilityState = AbilityState.NONE;
-            m_CurrentComboPercent = 0f;
-            CharacterEvents.UpdateCanMoveEvent?.Invoke(true);
         }
     }
 
@@ -151,7 +149,7 @@ public class CharacterAbility : MonoBehaviour
             case AbilityState.MELEE:
                 m_TriggerExitComboDelay = false;
                 m_CanTriggerExit = false;
-                m_AskedNextMeleeAttack = false;
+                //m_AskedNextMeleeAttack = false;
                 
                 m_ExitComboDelay = Mathf.Infinity;
                 m_CurrentComboPercent = 0f;
@@ -202,12 +200,12 @@ public class CharacterAbility : MonoBehaviour
         if (m_CurrentAbilityState == AbilityState.MELEE)
         {
             m_CurrentComboPercent += m_MeleeAbilityData.AdditionnalDamageComboPercent;
-            m_AskedNextMeleeAttack = true;
+            //m_AskedNextMeleeAttack = true;
         }
         else
         {
             m_CurrentComboPercent = 0f;
-            m_AskedNextMeleeAttack = false;
+            //m_AskedNextMeleeAttack = false;
         }
         
         m_TriggerExitComboDelay = false;
@@ -270,8 +268,8 @@ public class CharacterAbility : MonoBehaviour
         if (!m_CanTriggerExit)
             return;
         
-        m_AskedNextMeleeAttack = false;
-        m_CharacterAnimator.ResetTrigger(nextMeleeAttackTrigger);
+        //m_AskedNextMeleeAttack = false;
+        //m_CharacterAnimator.ResetTrigger(nextMeleeAttackTrigger);
         m_TriggerExitComboDelay = true;
         m_ExitComboDelay = Time.time + m_MeleeAbilityData.DelayBeforeExitCombo;
     }
@@ -279,7 +277,7 @@ public class CharacterAbility : MonoBehaviour
     public void TriggerEndCombo()
     {
         m_TriggerExitComboDelay = false;
-        m_AskedNextMeleeAttack = false;
+        //m_AskedNextMeleeAttack = false;
         m_CanTriggerExit = false;
         m_CurrentComboPercent = 0f;
         m_CurrentAbilityState = AbilityState.NONE;
@@ -287,8 +285,8 @@ public class CharacterAbility : MonoBehaviour
         m_DelayAfterEndCombo = Time.time + m_MeleeAbilityData.DelayAfterEndCombo;
         m_MeleeAbilityAvailable = false;
         
+        m_CharacterAnimator.SetTrigger(cancelMeleeTrigger);
         m_CharacterAnimator.ResetTrigger(meleeAttackTrigger);
-        m_CharacterAnimator.ResetTrigger(cancelMeleeTrigger);
         m_CharacterAnimator.ResetTrigger(nextMeleeAttackTrigger);
 
         
@@ -297,11 +295,13 @@ public class CharacterAbility : MonoBehaviour
 
     public void TriggerAskedNextAttack()
     {
-        if (!m_AskedNextMeleeAttack)
-            return;
+        //if (!m_AskedNextMeleeAttack)
+        //    return;
 
-        m_CharacterAnimator.ResetTrigger(meleeAttackTrigger);
-        m_AskedNextMeleeAttack = false;
+        //m_CharacterAnimator.ResetTrigger(meleeAttackTrigger);
+        //m_AskedNextMeleeAttack = false;
+        
+        Debug.Log("NEXT ATTAQUE CAN BE PERFORMED ! CLIC !");
         m_CharacterAnimator.SetTrigger(nextMeleeAttackTrigger);
 
     }
