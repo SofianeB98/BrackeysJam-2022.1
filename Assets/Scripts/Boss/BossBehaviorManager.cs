@@ -12,6 +12,8 @@ public class BossBehaviorManager : MonoBehaviour
 
     [Header("Behaviors")] 
     [SerializeField] private BossEarthquakeBehavior m_BossEarthquakeBehavior;
+    [SerializeField] private BossMeleeAtkBehavior m_BossMeleeAtkBehavior;
+    [SerializeField] private BossSwordCrossSlashBehavior m_BossSwordCrossSlashBehavior;
     
     [Header("Target")] 
     [SerializeField] private Transform m_Target;
@@ -34,6 +36,12 @@ public class BossBehaviorManager : MonoBehaviour
 
         if (m_BossEarthquakeBehavior == null)
             m_BossEarthquakeBehavior = GetComponent<BossEarthquakeBehavior>();
+        
+        if (m_BossMeleeAtkBehavior == null)
+            m_BossMeleeAtkBehavior = GetComponent<BossMeleeAtkBehavior>();
+        
+        if (m_BossSwordCrossSlashBehavior == null) 
+            m_BossSwordCrossSlashBehavior = GetComponent<BossSwordCrossSlashBehavior>();
     }
 
     public void SetAnimatorTrigger(string triggerName)
@@ -72,12 +80,12 @@ public class BossBehaviorManager : MonoBehaviour
 
     public void TriggerMeleeAttack()
     {
-        
+        m_BossMeleeAtkBehavior.Detect(this);
     }
 
     public void TriggerSwordCrossSlash()
     {
-        
+        m_BossSwordCrossSlashBehavior.Detect(this);
     }
     
     #endregion

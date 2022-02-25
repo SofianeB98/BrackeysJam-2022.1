@@ -7,8 +7,7 @@ public class BossEarthquakeBehavior : BossBehavior
 {
     [Header("Earthquake")] 
     [SerializeField] private BossEarthquakeData m_BossEarthquakeData;
-    [SerializeField] private LayerMask m_AffectedLayer;
-    
+
     public override void Detect(BossBehaviorManager bbm)
     {
         if (m_BossEarthquakeData == null)
