@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3fb99aa92fd5f34a9d11cbf5b7c46dc, type: 3}
-  m_Name: LineWaveCircle_1
+  m_Name: SlashWave
   m_EditorClassIdentifier: 
   m_ProjectileParameters:
-  - ProjectilePrefab: {fileID: 4409553192158743812, guid: 26350f501b3ff8b4cb18a3b762eb38a6, type: 3}
+  - ProjectilePrefab: {fileID: 4409553192158743812, guid: b5ff0f139fa3bdf4e99dcee26c117142, type: 3}
     LaunchAngleFromForward: 0
     DelayBeforeLaunch: 0
   m_RepeatCount: 1
