@@ -51,8 +51,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.8
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 10
+  m_StepOffset: 0.1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
@@ -73,6 +73,7 @@ MonoBehaviour:
   m_CharacterController: {fileID: 8507595967052323328}
   m_CharacterAnimator: {fileID: 0}
   m_MovementData: {fileID: 11400000, guid: 0bf089499ab47344d8931120b23a3667, type: 2}
+  m_EnableSuperSpeed: 0
   m_DashData: {fileID: 11400000, guid: 567627bda325f5b45840757cf0472abb, type: 2}
   m_IgnoreCollisionsLayer: 7
   m_DefaultLayer: 6
@@ -143,6 +144,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  HealthUpdatedEvent:
     m_PersistentCalls:
       m_Calls: []
   m_StartingHealth: 100

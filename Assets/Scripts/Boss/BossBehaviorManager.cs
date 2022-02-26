@@ -24,9 +24,9 @@ public class BossBehaviorManager : MonoBehaviour
     [SerializeField] private BossSwordCrossSlashBehavior m_BossSwordCrossSlashBehavior;
     [SerializeField] private BossLineWaveBehavior m_BossLineWaveBehavior;
     [SerializeField] private BossSwordWaveBehavior m_BossSwordWaveBehavior;
+    [SerializeField] private BossDashData m_DashData;
+    public BossDashData DashData => m_DashData;
 
-
-    
     [Header("Sword Wave Parameters")]
     [SerializeField] private Projectile m_SwordWavePrefab;
     

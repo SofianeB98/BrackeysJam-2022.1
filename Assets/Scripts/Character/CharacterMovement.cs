@@ -97,6 +97,16 @@ public class CharacterMovement : MonoBehaviour
         UpdateAnimator();
     }
 
+    private void LateUpdate()
+    {
+        if (transform.position.y <= 0.12f && transform.position.y >= 0f)
+            return;
+        
+        var pos = transform.position;
+        pos.y = 0.11f;
+        transform.position = pos;
+    }
+
     private void UpdateAnimator()
     {
         m_CharacterAnimator.SetBool(m_AnimIsDashing, m_IsDashing);
