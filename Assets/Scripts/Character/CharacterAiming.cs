@@ -15,6 +15,8 @@ public class CharacterAiming : MonoBehaviour
 
     private Vector3 m_AimingDirection = Vector3.forward;
     private Plane m_Plane;
+
+    private bool m_CanAim = true;
     
     private readonly int m_AnimBlendX = Animator.StringToHash("BlendX");
     private readonly int m_AnimBlendY = Animator.StringToHash("BlendY");
@@ -41,11 +43,13 @@ public class CharacterAiming : MonoBehaviour
     private void OnEnable()
     {
         m_CharacterInput.AimingEvent += UpdateAiming;
+        CharacterEvents.UpdateCanMoveEvent += CanUpdateRotation;
     }
 
     private void OnDisable()
     {
         m_CharacterInput.AimingEvent -= UpdateAiming;
+        CharacterEvents.UpdateCanMoveEvent -= CanUpdateRotation;
     }
 
     private void Update()
@@ -60,7 +64,6 @@ public class CharacterAiming : MonoBehaviour
         Quaternion qt = Quaternion.Euler(0.0f, m_CameraReferential.transform.eulerAngles.y, 0.0f);
         m_AimingDirection = qt * dir3D;
         m_AimingDirection.Normalize();
-        UpdatePlayerRotation();
     }
     
     private void UpdateAimingByMouse(Vector2 screenPos)
@@ -78,6 +81,9 @@ public class CharacterAiming : MonoBehaviour
 
     private void UpdatePlayerRotation()
     {
+        if (!m_CanAim)
+            return;
+        
         if (m_AimingDirection.sqrMagnitude > Mathf.Epsilon)
             transform.rotation = Quaternion.LookRotation(m_AimingDirection, Vector3.up);
         else if (m_CharacterController.velocity.sqrMagnitude > 0)
@@ -113,6 +119,11 @@ public class CharacterAiming : MonoBehaviour
             UpdateAimingByMouse(dir);
     }
 
+    private void CanUpdateRotation(bool canAim)
+    {
+        m_CanAim = canAim;
+    }
+    
     #endregion
 
     private void OnDrawGizmos()

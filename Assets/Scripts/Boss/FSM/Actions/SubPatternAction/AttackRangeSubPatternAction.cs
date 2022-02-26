@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "AttackRangeSubPatternAction",
     menuName = "FSM/FSM Pattern Actions/New AttackRangeSubPatternAction", order = 0)]
@@ -47,6 +48,11 @@ public class AttackRangeSubPatternAction : SubPatternAction
         var rot = Quaternion.LookRotation(dir.normalized, Vector3.up);
 
         var proj = Instantiate(p.ProjectilePrefab, pos, rot);
+        var rdm = Random.Range(0.0f, 100.01f);
+        if (p.PercentChanceNotReal <= rdm)
+        {
+            proj.SetNotReal(true);
+        }
         proj.CollisionDetectedEvent += fsmController.Boss.ProjectileCollideWithSomething;
 
         m_CurrentIndex++;
@@ -80,4 +86,6 @@ public struct AIProjectileParameter
     public float LaunchAngleFromForward;
 
     public float DelayBeforeLaunch;
+
+    public float PercentChanceNotReal;
 }
