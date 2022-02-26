@@ -12,4 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d331a8a47ef24f449f5ccab6ec775c3, type: 3}
   m_Name: Pattern_Phase3
   m_EditorClassIdentifier: 
-  m_SubPatternActions: []
+  m_SubPatternActions:
+  - {fileID: 11400000, guid: 1b08be780a077f349b4eee87db50a89a, type: 2}
+  - {fileID: 11400000, guid: ca3db2182920fdf489575b57dff6326b, type: 2}
+  - {fileID: 11400000, guid: 2490f960fb9a01f44b1a1f4f6ec21768, type: 2}
+  - {fileID: 11400000, guid: f6146b2229d73f24d8b951d013207399, type: 2}
+  - {fileID: 11400000, guid: 7b8488c4b4ed5134a9bb66e661b1becc, type: 2}
+  - {fileID: 11400000, guid: 67fba9c346fe4e14cb0006f7fc53461e, type: 2}
+  - {fileID: 11400000, guid: 35cdb598ee6a0414cb8a19f783b5d8c4, type: 2}
+  - {fileID: 11400000, guid: 7b8488c4b4ed5134a9bb66e661b1becc, type: 2}
+  - {fileID: 11400000, guid: e136ff6486dc6314f8f5f3675d09f7b8, type: 2}
+  - {fileID: 11400000, guid: 7b8488c4b4ed5134a9bb66e661b1becc, type: 2}
+  - {fileID: 11400000, guid: e136ff6486dc6314f8f5f3675d09f7b8, type: 2}
+  - {fileID: 11400000, guid: 7b8488c4b4ed5134a9bb66e661b1becc, type: 2}
+  - {fileID: 11400000, guid: e136ff6486dc6314f8f5f3675d09f7b8, type: 2}
+  - {fileID: 11400000, guid: 7b8488c4b4ed5134a9bb66e661b1becc, type: 2}
+  - {fileID: 11400000, guid: e136ff6486dc6314f8f5f3675d09f7b8, type: 2}
+  - {fileID: 11400000, guid: 7b8488c4b4ed5134a9bb66e661b1becc, type: 2}
+  - {fileID: 11400000, guid: e136ff6486dc6314f8f5f3675d09f7b8, type: 2}
