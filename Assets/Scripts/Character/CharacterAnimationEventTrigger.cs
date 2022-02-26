@@ -21,6 +21,11 @@ public class CharacterAnimationEventTrigger : MonoBehaviour
             m_CharacterAiming = GetComponentInParent<CharacterAiming>();
     }
 
+    public void MeleeLookToBoss()
+    {
+        m_CharacterAbility.MeleeLookToBoss();
+    }
+    
     public void DetectMeleeCollision()
     {
         m_CharacterAbility.DetectMeleeCollision();
