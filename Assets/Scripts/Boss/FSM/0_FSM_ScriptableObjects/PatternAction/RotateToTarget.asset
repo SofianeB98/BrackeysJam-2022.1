@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce0cc5a3a411984a9f8d9aaa5aa1a07, type: 3}
   m_Name: RotateToTarget
   m_EditorClassIdentifier: 
-  m_TimeToReach: 0.25
-  m_RepeatCount: 1
-  m_DelayBeforeRepeat: 0
+  m_SpeedToRotate: 90
+  m_TimeToReach: 0.15

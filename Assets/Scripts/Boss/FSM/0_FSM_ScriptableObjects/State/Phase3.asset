@@ -16,12 +16,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cbddde9eb8bcda14382353104daac7ae, type: 2}
   m_Transitions:
   - Conditions:
-    - {fileID: 11400000, guid: 3a2b53b00b38db74da58df3f9232ba22, type: 2}
-    TrueState: {fileID: 11400000}
-    FalseState: {fileID: 0}
-  - Conditions:
     - {fileID: 11400000, guid: aeb0a5edd80254342b3dbb158edcd59b, type: 2}
     TrueState: {fileID: 11400000, guid: ef0e1c34d25f45049af7bbafe23504d6, type: 2}
+    FalseState: {fileID: 0}
+  - Conditions:
+    - {fileID: 11400000, guid: 3a2b53b00b38db74da58df3f9232ba22, type: 2}
+    TrueState: {fileID: 11400000}
     FalseState: {fileID: 0}
   m_DebugColor: {r: 1, g: 0, b: 0, a: 1}
   TriggerTransition: 0
