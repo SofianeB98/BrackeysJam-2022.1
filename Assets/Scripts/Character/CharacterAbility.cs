@@ -45,6 +45,7 @@ public class CharacterAbility : MonoBehaviour
 
     [SerializeField] private Projectile m_Projectile;
     private float m_RangeAbilityTimer = 0f;
+    private int m_CurrentMunition = 15;
 
     private AbilityState m_CurrentAbilityState = AbilityState.NONE;
     private readonly int meleeAttackTrigger = Animator.StringToHash("MeleeAttackTrigger");
@@ -134,10 +135,15 @@ public class CharacterAbility : MonoBehaviour
 
     private void RangeAbility()
     {
-        if (m_RangeAbilityTimer < Time.time)
+        if (m_RangeAbilityTimer < Time.time && m_CurrentMunition > 0)
         {
             m_CharacterAnimator.SetTrigger(rangeAttackTrigger);
             m_RangeAbilityTimer = Time.time + m_RangeAbilityData.DelayBetweenShoot;
+        }
+        else
+        {
+            CancelCurrentAction(AbilityState.NONE);
+            m_CurrentAbilityState = AbilityState.NONE;
         }
     }
 
@@ -224,6 +230,9 @@ public class CharacterAbility : MonoBehaviour
 
     private void TriggerRangeAbility(bool isPerformed)
     {
+        if (m_CurrentMunition == 0)
+            return;
+
         if (m_CurrentAbilityState == AbilityState.CAN_NOT_PERFORM_ABILITY)
             return;
 
@@ -270,8 +279,13 @@ public class CharacterAbility : MonoBehaviour
         m_CanTriggerExit = true;
 
         foreach (var c in cols)
+        {
             if (c.TryGetComponent(out Health h))
+            {
                 h.ReduceHealth(m_MeleeAbilityData.Damage + m_MeleeAbilityData.Damage * m_CurrentComboPercent * 0.01f);
+                m_CurrentMunition = Mathf.Clamp(m_CurrentMunition + 1, 0, m_RangeAbilityData.MaxMunition);
+            }
+        }
     }
 
     public void TriggerExitComboDelay()
@@ -325,6 +339,7 @@ public class CharacterAbility : MonoBehaviour
         Projectile p = Instantiate(m_Projectile, transform.position + (rot * m_RangeAbilityData.LaunchPositionOffset),
             rot);
         p.CollisionDetectedEvent += ProjectileCollideWithSomething;
+        m_CurrentMunition = Mathf.Clamp(m_CurrentMunition - 1, 0, m_RangeAbilityData.MaxMunition);
     }
 
     #endregion
