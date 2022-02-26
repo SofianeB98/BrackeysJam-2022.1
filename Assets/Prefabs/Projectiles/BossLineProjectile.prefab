@@ -51,7 +51,9 @@ MonoBehaviour:
     m_Bits: 1664
   m_IsVfxGraph: 1
   m_Effect: {fileID: 0}
+  m_GlitchedEffect: {fileID: 0}
   m_IsNotReal: 0
+  ShaderGraphFX: {fileID: 7087702204592627674}
   m_CubeMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &4661163192996994692
 PrefabInstance:
@@ -104,6 +106,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
+      propertyPath: m_PropertySheet.m_Bool.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
+      propertyPath: m_PropertySheet.m_Bool.m_Array.Array.data[0].m_Name
+      value: Glitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
+      propertyPath: m_PropertySheet.m_Bool.m_Array.Array.data[0].m_Overridden
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2518449663687328095, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -117,5 +131,10 @@ PrefabInstance:
 --- !u!4 &6001853303097677183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1433581733731781627, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
+  m_PrefabInstance: {fileID: 4661163192996994692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &7087702204592627674 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
   m_PrefabInstance: {fileID: 4661163192996994692}
   m_PrefabAsset: {fileID: 0}

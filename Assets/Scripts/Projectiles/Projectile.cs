@@ -13,7 +13,9 @@ public class Projectile : MonoBehaviour
     [SerializeField] private LayerMask m_IgnoreLayer;
     [SerializeField] private bool m_IsVfxGraph = false;
     [SerializeField] private ParticleSystem m_Effect;
+    [SerializeField] private ParticleSystem m_GlitchedEffect;
     [SerializeField] private bool m_IsNotReal = false;
+    [SerializeField] private VisualEffect ShaderGraphFX;
     
     [Header("Gizmo")] 
     [SerializeField] private Mesh m_CubeMesh;
@@ -35,6 +37,8 @@ public class Projectile : MonoBehaviour
     public void SetNotReal(bool v)
     {
         m_IsNotReal = v;
+        if (ShaderGraphFX != null)
+            ShaderGraphFX.SetBool("Glitch", m_IsNotReal);
     }
     
     private void Update()
@@ -48,10 +52,17 @@ public class Projectile : MonoBehaviour
     private void InitializeParticleSystem()
     {
         var mainModule = m_Effect.main;
+
+        if (m_IsNotReal)
+            mainModule = m_GlitchedEffect.main;
+
         mainModule.duration = m_LifeTime + 0.02f;
         mainModule.startSpeed = m_ProjectileData.Speed;
         mainModule.startLifetime = m_LifeTime;
-        m_Effect.gameObject.SetActive(true);
+        if (m_IsNotReal)
+            m_GlitchedEffect.gameObject.SetActive(true);
+        else
+            m_Effect.gameObject.SetActive(true);
     }
     
     private void Detect()
