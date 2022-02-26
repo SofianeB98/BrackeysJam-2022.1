@@ -51,8 +51,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _EdgeSmooth: 0
+    - _GlitchAmount: -0.16
+    - _GlitchAmount02: 0.5
     - _GradientIntensity: 1.6
     - _GradientStrength: 1
+    - _IsGlitching: 0
+    - _NoiseScale: 500
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
