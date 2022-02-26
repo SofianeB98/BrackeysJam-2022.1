@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -19,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Dash Data")] [SerializeField] private CharacterDashData m_DashData;
     [SerializeField] private int m_IgnoreCollisionsLayer = 7;
     [SerializeField] private int m_DefaultLayer = 6;
+    [SerializeField] private GameObject m_DashVFX;
     
     private Vector3 m_DashDirection = Vector3.forward;
     private Vector3 m_CurrentDirection = Vector3.zero;
@@ -80,6 +82,11 @@ public class CharacterMovement : MonoBehaviour
         }
         else
         {
+            if (m_DashVFX.activeSelf)
+            {
+                m_DashVFX.SetActive(false);
+            }
+            
             m_DashDirection = m_CurrentDirection.sqrMagnitude > 0 ? m_CurrentDirection : m_DashDirection;
             if (m_EnableSuperSpeed) CheckResetSuperSpeed();
 
@@ -226,6 +233,9 @@ public class CharacterMovement : MonoBehaviour
             return;
         
         m_IsDashing = true;
+
+        m_DashVFX.SetActive(true);
+        
         gameObject.layer = m_IgnoreCollisionsLayer;
         m_DashRecoveryTimer = 0f;
         m_CurrentDashDuration = 0f;
