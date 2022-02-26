@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3871861553140629526
+--- !u!114 &-4373869312096605156
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_TrailAB_Warrior
-  m_Shader: {fileID: 4800000, guid: 94ef3a397bbca924fa1dad65e7b51be4, type: 3}
+  m_Name: M_DashRipples
+  m_Shader: {fileID: -6465566751694194690, guid: aaf3df8e464f480488b37d08aa28fde9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,19 +32,11 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_7FCC054E:
-        m_Texture: {fileID: 2800000, guid: 99bf86da3e6c6a04193639e6fce8f6d9, type: 3}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2b2ab030f0ca633478675008e0d55658, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - Texture2D_B24C83B0:
-        m_Texture: {fileID: 2800000, guid: c5798d93410b8514ab6ac6abc15ab0c1, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_E43982E:
-        m_Texture: {fileID: 2800000, guid: cfb8300945456754da536d9666b82d7e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_E5130C32:
+    - _Mask:
         m_Texture: {fileID: 2800000, guid: 03e4ee8d0b5f45045bb12e2930ed4058, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -62,16 +54,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_C1728026: 0.1
-    - Vector1_D1034171: -0.07
+    - _CellDensity: 10
+    - _DissolveAmount: 0
+    - _DissolveStrength: 0.1
+    - _DistAmount: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - Color_DB555ADA: {r: 1.6, g: 2.9960785, b: 2.964706, a: 1}
-    - Vector2_781FB8A4: {r: 1, g: 1, b: 0, a: 0}
-    - Vector2_892CE00: {r: 1, g: 1, b: 0, a: 0}
-    - Vector2_8E0A3991: {r: 0, g: -0.2, b: 0, a: 0}
-    - Vector2_C3A961A0: {r: 0, g: 0, b: 0, a: 0}
-    - Vector2_D6AA7B7D: {r: 1, g: 1, b: 0, a: 0}
-    - Vector2_E10066FE: {r: 0, g: 0.5, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ScrollSpeed: {r: 0, g: 0.2, b: 0, a: 0}
+    - _VoronoiSpeed: {r: 0, g: 0.2, b: 0, a: 0}
   m_BuildTextureStacks: []
