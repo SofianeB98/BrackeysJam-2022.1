@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_TrailAB_Boomer
+  m_Name: M_TrailAB
   m_Shader: {fileID: 4800000, guid: 94ef3a397bbca924fa1dad65e7b51be4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
