@@ -15,9 +15,12 @@ MonoBehaviour:
   m_ProjectileParameters:
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: 453e23e055e8a914b97a72914a4853fe, type: 3}
     LaunchAngleFromForward: 20
+    DelayBeforeLaunch: 0
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: 453e23e055e8a914b97a72914a4853fe, type: 3}
     LaunchAngleFromForward: -20
+    DelayBeforeLaunch: 0
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: 453e23e055e8a914b97a72914a4853fe, type: 3}
     LaunchAngleFromForward: 0
+    DelayBeforeLaunch: 0
   m_RepeatCount: 1
   m_DelayBeforeRepeat: 0

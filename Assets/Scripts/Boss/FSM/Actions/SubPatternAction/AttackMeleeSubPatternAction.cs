@@ -6,6 +6,7 @@ using UnityEngine;
 public class AttackMeleeSubPatternAction : SubPatternAction
 {
     [SerializeField] private string m_AnimStateToTrigger = "Attack";
+    [SerializeField] private float m_OffsetDuration = -0.1f;
 
     private float m_AnimDuration = 0f;
     private bool m_DurationSetted = false;
@@ -29,7 +30,7 @@ public class AttackMeleeSubPatternAction : SubPatternAction
             if(fsmController.Boss.Animator.GetCurrentAnimatorStateInfo(0).IsName(m_AnimStateToTrigger))
             {
                 m_DurationSetted = true;
-                m_AnimDuration = fsmController.Boss.Animator.GetCurrentAnimatorStateInfo(0).length;
+                m_AnimDuration = fsmController.Boss.Animator.GetCurrentAnimatorStateInfo(0).length + m_OffsetDuration;
             }
         }
 

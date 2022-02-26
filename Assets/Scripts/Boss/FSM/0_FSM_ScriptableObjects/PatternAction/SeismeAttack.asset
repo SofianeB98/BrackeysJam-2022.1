@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SeismeAttack
   m_EditorClassIdentifier: 
   m_AnimStateToTrigger: Seisme
+  m_OffsetDuration: -0.6
