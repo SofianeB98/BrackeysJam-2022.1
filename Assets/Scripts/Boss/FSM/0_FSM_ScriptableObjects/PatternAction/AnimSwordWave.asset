@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AnimSwordWave
   m_EditorClassIdentifier: 
   m_AnimStateToTrigger: SwordWave
-  m_OffsetDuration: -0.1
+  m_OffsetDuration: 0
