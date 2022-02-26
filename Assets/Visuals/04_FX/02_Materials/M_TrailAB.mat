@@ -64,10 +64,15 @@ Material:
     m_Floats:
     - Vector1_C1728026: 1.94
     - Vector1_D1034171: -0.07
+    - _GlitchAmount: 0.5
+    - _GlitchAmount02: 0.2
+    - _IsGlitching: 0
+    - _NoiseScale: 500
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - Color_DB555ADA: {r: 13.050981, g: 1.254902, b: 0.3764706, a: 1}
+    - Color_DB555ADA: {r: 766.9961, g: 76.29804, b: 24.094118, a: 1}
+    - Color_DB555ADA_1: {r: 578.25885, g: 0, b: 3067.9844, a: 1}
     - Vector2_781FB8A4: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_892CE00: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_8E0A3991: {r: 0, g: -0.2, b: 0, a: 0}

@@ -4771,7 +4771,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 0}
-  - {fileID: 2100000, guid: 906b6bf2c5713e7418db4bbdebf905aa, type: 2}
+  - {fileID: 2100000, guid: d98b713b2301b8148b53fa73388e8d5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4832,7 +4832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5213449157375848802}
   m_Layer: 0
-  m_Name: Demon_Attack01
+  m_Name: Demon_Attack01_Glitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -33,7 +33,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2b2ab030f0ca633478675008e0d55658, type: 3}
+        m_Texture: {fileID: 2800000, guid: bc2c9eb282b155143b5284d8224deda4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
@@ -54,14 +54,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CellDensity: 10
-    - _DissolveAmount: 0
-    - _DissolveStrength: 0.1
-    - _DistAmount: 0.2
+    - _CellDensity: 4.45
+    - _DissolveAmount: 0.36
+    - _DissolveStrength: 1.86
+    - _DistAmount: -3.6
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ScrollSpeed: {r: 0, g: 0.2, b: 0, a: 0}
+    - _Color: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
+    - _ScrollSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _VoronoiSpeed: {r: 0, g: 0.2, b: 0, a: 0}
   m_BuildTextureStacks: []

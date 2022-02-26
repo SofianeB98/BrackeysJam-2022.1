@@ -4829,7 +4829,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 51b57c6f6cf649540a15af4c1e6e75ee, type: 2}
+  - {fileID: 2100000, guid: 8a369d01326f0f5438bf2b25e4b573ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4890,7 +4890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3631804570209479901}
   m_Layer: 0
-  m_Name: Blade_Wave
+  m_Name: Blade_Wave_Glitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9673,7 +9673,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e9507283d06ac20408822f33e8337707, type: 2}
+  - {fileID: 2100000, guid: 1010e1b5d7e68f748a34ca45de057ff9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

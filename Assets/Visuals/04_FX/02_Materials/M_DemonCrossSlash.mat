@@ -48,12 +48,17 @@ Material:
     - _Emission: 2.2
     - _Fade: 1.13
     - _Fade02: 0.49
+    - _GlitchAmount: 0.5
+    - _GlitchAmount02: 0.5
+    - _IsGlitching: 1
+    - _NoiseScale: 500
     - _Offset: -0.53
     - _Opacit: 1.5
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _Color02: {r: 14.259474, g: 14.259474, b: 14.259474, a: 1}
+    - _Color02_1: {r: 5.3403134, g: 5.3403134, b: 5.3403134, a: 1}
     - _NoiseSpeed: {r: 0.2, g: 0.1, b: 0, a: 0}
     - _RemapIn: {r: -0.06, g: 0.57, b: 0, a: 0}
     - _RemapOut: {r: 0.08, g: 0.77, b: 0, a: 0}

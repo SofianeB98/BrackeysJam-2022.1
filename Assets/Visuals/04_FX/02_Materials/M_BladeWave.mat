@@ -51,12 +51,17 @@ Material:
     m_Ints: []
     m_Floats:
     - _EdgeSmooth: 0
+    - _GlitchAmount: -0.52
+    - _GlitchAmount02: 0.3
     - _GradientIntensity: 1.6
     - _GradientStrength: 1
+    - _IsGlitching: 0
+    - _NoiseScale: 500
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - Tiling_Dev: {r: 1, g: 1, b: 0, a: 0}
-    - _Color: {r: 4, g: 4, b: 4, a: 1}
+    - _Color: {r: 4.390208, g: 0, b: 0, a: 1}
+    - _Color02: {r: 1.2625235, g: 0, b: 3.9999995, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
