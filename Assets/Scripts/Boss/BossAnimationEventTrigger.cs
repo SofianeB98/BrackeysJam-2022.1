@@ -31,6 +31,16 @@ public class BossAnimationEventTrigger : MonoBehaviour
         m_BossBehaviorManager.TriggerSwordCrossSlash(slashIndex);
     }
     
+    public void TriggerSwordWave()
+    {
+        m_BossBehaviorManager.TriggerSwordWave();
+    }
+    
+    public void TriggerLineWave()
+    {
+        m_BossBehaviorManager.TriggerLineWave();
+    }
+    
     #endregion
     
 }

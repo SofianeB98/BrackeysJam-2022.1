@@ -20,6 +20,6 @@ public class ProjectileData : ScriptableObject
     private void OnValidate()
     {
         if (Speed > 0.0f && DistanceToReach > 0.0f)
-            LifeTime = DistanceToReach / Speed;
+            LifeTime = Mathf.Abs(DistanceToReach / Speed);
     }
 }

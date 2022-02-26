@@ -37,7 +37,6 @@ public class CharacterAbility : MonoBehaviour
     
     [Header("Range Ability")] [SerializeField]
     private CharacterRangeAbilityData m_RangeAbilityData;
-
     [SerializeField] private Projectile m_Projectile;
     private float m_RangeAbilityTimer = 0f;
 
@@ -308,8 +307,9 @@ public class CharacterAbility : MonoBehaviour
     
     public void LaunchProjectile()
     {
-        Projectile p = Instantiate(m_Projectile, transform.position,
-            Quaternion.LookRotation(m_CharacterAiming.AimingDirection, Vector3.up));
+        var rot = Quaternion.LookRotation(m_CharacterAiming.AimingDirection, Vector3.up);
+        Projectile p = Instantiate(m_Projectile, transform.position + (rot * m_RangeAbilityData.LaunchPositionOffset),
+            rot);
         p.CollisionDetectedEvent += ProjectileCollideWithSomething;
     }
     

@@ -22,6 +22,13 @@ public class BossBehaviorManager : MonoBehaviour
     [SerializeField] private BossEarthquakeBehavior m_BossEarthquakeBehavior;
     [SerializeField] private BossMeleeAtkBehavior m_BossMeleeAtkBehavior;
     [SerializeField] private BossSwordCrossSlashBehavior m_BossSwordCrossSlashBehavior;
+    [SerializeField] private BossLineWaveBehavior m_BossLineWaveBehavior;
+    [SerializeField] private BossSwordWaveBehavior m_BossSwordWaveBehavior;
+
+
+    
+    [Header("Sword Wave Parameters")]
+    [SerializeField] private Projectile m_SwordWavePrefab;
     
     [Header("Target")] 
     [SerializeField] private Transform m_Target;
@@ -56,6 +63,12 @@ public class BossBehaviorManager : MonoBehaviour
         
         if (m_BossSwordCrossSlashBehavior == null) 
             m_BossSwordCrossSlashBehavior = GetComponent<BossSwordCrossSlashBehavior>();
+        
+        if (m_BossLineWaveBehavior == null)
+            m_BossLineWaveBehavior = GetComponent<BossLineWaveBehavior>();
+        
+        if (m_BossSwordWaveBehavior == null) 
+            m_BossSwordWaveBehavior = GetComponent<BossSwordWaveBehavior>();
     }
 
     public void SetAnimatorTrigger(string triggerName)
@@ -102,6 +115,16 @@ public class BossBehaviorManager : MonoBehaviour
     {
         SlashIndex = slashIndex;
         m_BossSwordCrossSlashBehavior.Detect(this);
+    }
+
+    public void TriggerSwordWave()
+    {
+        m_BossSwordWaveBehavior.TriggerRange();
+    }
+    
+    public void TriggerLineWave()
+    {
+        m_BossLineWaveBehavior.TriggerRange();
     }
     
     #endregion

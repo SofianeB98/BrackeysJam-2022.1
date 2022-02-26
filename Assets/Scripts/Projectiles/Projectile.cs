@@ -28,6 +28,11 @@ public class Projectile : MonoBehaviour
         m_DetectionPoint = transform.position;
     }
 
+    public void SetNotReal(bool v)
+    {
+        m_IsNotReal = v;
+    }
+    
     private void Update()
     {
         if (m_IsNotReal)
