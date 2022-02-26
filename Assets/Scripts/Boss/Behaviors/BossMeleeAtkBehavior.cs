@@ -10,7 +10,17 @@ public class BossMeleeAtkBehavior : BossBehavior
     
     public override void Detect(BossBehaviorManager bbm)
     {
-        
+        var cols = Physics.OverlapSphere(transform.position + (transform.rotation * m_BossMeleeAtkData.DetectionPositionOffset),
+            m_BossMeleeAtkData.DetectionRadius, m_AffectedLayer);
+
+        foreach (var c in cols)
+        {
+            if (!c.TryGetComponent(out Health hp))
+                continue;
+            
+            hp.ReduceHealth(m_BossMeleeAtkData.Damage);
+            break;
+        }
     }
 
     private void OnDrawGizmos()
@@ -19,5 +29,6 @@ public class BossMeleeAtkBehavior : BossBehavior
             return;
 
         Gizmos.color = m_DebugColor;
+        Gizmos.DrawWireSphere(transform.position+ (transform.rotation * m_BossMeleeAtkData.DetectionPositionOffset), m_BossMeleeAtkData.DetectionRadius);
     }
 }

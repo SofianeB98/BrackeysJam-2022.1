@@ -25,9 +25,10 @@ public class BossAnimationEventTrigger : MonoBehaviour
         m_BossBehaviorManager.TriggerMeleeAttack();
     }
 
-    public void TriggerSwordCrossSlash()
+    public void TriggerSwordCrossSlash(int slashIndex)
     {
-        m_BossBehaviorManager.TriggerSwordCrossSlash();
+        Debug.Log("Slash !! --> " + slashIndex);
+        m_BossBehaviorManager.TriggerSwordCrossSlash(slashIndex);
     }
     
     #endregion

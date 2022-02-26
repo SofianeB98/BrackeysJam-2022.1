@@ -97,8 +97,10 @@ public class BossBehaviorManager : MonoBehaviour
         m_BossMeleeAtkBehavior.Detect(this);
     }
 
-    public void TriggerSwordCrossSlash()
+    public int SlashIndex = 0;
+    public void TriggerSwordCrossSlash(int slashIndex)
     {
+        SlashIndex = slashIndex;
         m_BossSwordCrossSlashBehavior.Detect(this);
     }
     

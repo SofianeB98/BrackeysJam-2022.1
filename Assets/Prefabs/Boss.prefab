@@ -164,6 +164,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_DebugColor: {r: 0.75135803, g: 0, b: 1, a: 1}
   m_BossSwordCrossSlashData: {fileID: 11400000, guid: 369f0feba31d2ed458cf80b9c3a7b14b, type: 2}
+  m_CubeMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &3714559987014368386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,12 +178,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 6678668779372793128}
+  m_Agent: {fileID: 0}
   m_BossEarthquakeBehavior: {fileID: 3711697951527063928}
   m_BossMeleeAtkBehavior: {fileID: 7700099976190235233}
   m_BossSwordCrossSlashBehavior: {fileID: 8244002252499951611}
   m_Target: {fileID: 0}
   m_Health: {fileID: 6561260046447691760}
   damage: 20
+  SlashIndex: 0
 --- !u!1001 &8764723094226951778
 PrefabInstance:
   m_ObjectHideFlags: 0

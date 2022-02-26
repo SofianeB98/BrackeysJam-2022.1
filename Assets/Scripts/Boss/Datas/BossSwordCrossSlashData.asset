@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageFirstSlash: 10
   DamageSecondSlash: 10
+  SlashDetectionParameters:
+  - m_OffsetPosition: {x: 0, y: 0, z: 1}
+    m_SlashBoxDetection: {x: 6.74, y: 2, z: 2}
+  - m_OffsetPosition: {x: 0, y: 0, z: 3}
+    m_SlashBoxDetection: {x: 2, y: 2, z: 6}
