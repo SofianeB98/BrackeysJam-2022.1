@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3fb99aa92fd5f34a9d11cbf5b7c46dc, type: 3}
+  m_Name: SlashWaveForward_1
+  m_EditorClassIdentifier: 
+  m_ProjectileParameters:
+  - ProjectilePrefab: {fileID: 4409553192158743812, guid: b5ff0f139fa3bdf4e99dcee26c117142, type: 3}
+    LaunchAngleFromForward: 0
+  m_RepeatCount: 1
+  m_DelayBeforeRepeat: 0
