@@ -140,7 +140,7 @@ public class CharacterAbility : MonoBehaviour
             m_CharacterAnimator.SetTrigger(rangeAttackTrigger);
             m_RangeAbilityTimer = Time.time + m_RangeAbilityData.DelayBetweenShoot;
         }
-        else
+        else if (m_CurrentMunition == 0)
         {
             CancelCurrentAction(AbilityState.NONE);
             m_CurrentAbilityState = AbilityState.NONE;
@@ -283,7 +283,11 @@ public class CharacterAbility : MonoBehaviour
             if (c.TryGetComponent(out Health h))
             {
                 h.ReduceHealth(m_MeleeAbilityData.Damage + m_MeleeAbilityData.Damage * m_CurrentComboPercent * 0.01f);
-                m_CurrentMunition = Mathf.Clamp(m_CurrentMunition + 1, 0, m_RangeAbilityData.MaxMunition);
+                if (m_CurrentMunition < m_RangeAbilityData.MaxMunition)
+                {
+                    m_CurrentMunition = Mathf.Clamp(m_CurrentMunition + 1, 0, m_RangeAbilityData.MaxMunition);
+                    CharacterEvents.ProjectileAdded.Invoke(m_CurrentMunition);
+                }
             }
         }
     }
@@ -339,7 +343,11 @@ public class CharacterAbility : MonoBehaviour
         Projectile p = Instantiate(m_Projectile, transform.position + (rot * m_RangeAbilityData.LaunchPositionOffset),
             rot);
         p.CollisionDetectedEvent += ProjectileCollideWithSomething;
-        m_CurrentMunition = Mathf.Clamp(m_CurrentMunition - 1, 0, m_RangeAbilityData.MaxMunition);
+        if (m_CurrentMunition > 0)
+        {
+            m_CurrentMunition = Mathf.Clamp(m_CurrentMunition - 1, 0, m_RangeAbilityData.MaxMunition);
+            CharacterEvents.ProjectileRemoved.Invoke(m_CurrentMunition);
+        }
     }
 
     #endregion

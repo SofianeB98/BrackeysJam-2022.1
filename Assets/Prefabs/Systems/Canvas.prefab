@@ -792,6 +792,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LifeSlider: {fileID: 3315035771998719285}
+  m_LifeSliderPreview: {fileID: 0}
+  easeLerp:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  waitTime: 2
 --- !u!1 &3315035772091717028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,6 +1496,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LifeSlider: {fileID: 4163372951872672530}
+  m_LifeSliderPreview: {fileID: 0}
+  easeLerp:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  waitTime: 2
 --- !u!1 &7991407176067929874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2668,6 +2684,7 @@ GameObject:
   - component: {fileID: 7991407177828224709}
   - component: {fileID: 7991407177828224711}
   - component: {fileID: 7991407177828224708}
+  - component: {fileID: 288198482990279394}
   m_Layer: 5
   m_Name: Slots_Range_Attack
   m_TagString: Untagged
@@ -2774,6 +2791,38 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &288198482990279394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7991407177828224699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42630142fceb8bc4e95a015c6bd4dbf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Slots:
+  - {fileID: 7991407176706463474}
+  - {fileID: 7991407177154864640}
+  - {fileID: 7991407176778815128}
+  - {fileID: 7991407177572603952}
+  - {fileID: 7991407177362266923}
+  - {fileID: 7991407177516313315}
+  - {fileID: 7991407176702796420}
+  - {fileID: 7991407176086752828}
+  - {fileID: 7991407176067929884}
+  - {fileID: 7991407176560651809}
+  - {fileID: 7991407177858526911}
+  - {fileID: 7991407176400282645}
+  - {fileID: 7991407176873645197}
+  - {fileID: 7991407176756343641}
+  - {fileID: 7991407176963029922}
+  m_ThresholdEmpty: 5
+  m_CloseToEmptyColor: {r: 1, g: 0, b: 0, a: 1}
+  m_DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EmptyColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &7991407177858526909
 GameObject:
   m_ObjectHideFlags: 0
