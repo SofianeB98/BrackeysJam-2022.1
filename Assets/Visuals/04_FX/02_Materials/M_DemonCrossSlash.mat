@@ -50,7 +50,7 @@ Material:
     - _Fade02: 0.49
     - _GlitchAmount: 0.5
     - _GlitchAmount02: 0.5
-    - _IsGlitching: 1
+    - _IsGlitching: 0
     - _NoiseScale: 500
     - _Offset: -0.53
     - _Opacit: 1.5
