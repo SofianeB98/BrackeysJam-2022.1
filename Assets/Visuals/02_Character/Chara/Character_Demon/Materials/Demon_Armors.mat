@@ -90,6 +90,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _ActivateEmissive: 0
     - _AlphaClip: 1
     - _Base_Boost: 1.8
     - _Blend: 0
