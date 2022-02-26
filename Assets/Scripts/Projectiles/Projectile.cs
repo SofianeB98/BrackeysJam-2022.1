@@ -38,10 +38,9 @@ public class Projectile : MonoBehaviour
     
     private void Update()
     {
-        if (m_IsNotReal)
-            return;
+        if (!m_IsNotReal)
+            Detect();
         
-        Detect();
         Move();
     }
 

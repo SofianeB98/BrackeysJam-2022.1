@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AttackMeleeSubPatternAction", menuName = "FSM/FSM Pattern Actions/New AttackMeleeSubPatternAction", order = 0)]
-public class AttackMeleeSubPatternAction : SubPatternAction
+[CreateAssetMenu(fileName = "AttackFromAnimatorSubPatternAction", menuName = "FSM/FSM Pattern Actions/New AttackFromAnimatorSubPatternAction", order = 0)]
+public class AttackFromAnimatorSubPatternAction : SubPatternAction
 {
     [SerializeField] private string m_AnimStateToTrigger = "Attack";
     [SerializeField] private float m_OffsetDuration = -0.1f;
