@@ -53,7 +53,10 @@ public class Health : MonoBehaviour
 
         Animator anim = GetComponentInChildren<Animator>() ?? GetComponent<Animator>();
         if (anim != null)
-            anim.SetBool("IsDead", m_IsDead);
+        {
+            anim.SetTrigger("IsDeadTrigger");
+            anim.SetBool("IsDead", true);
+        }
         
         DeathEvent?.Invoke();
     }

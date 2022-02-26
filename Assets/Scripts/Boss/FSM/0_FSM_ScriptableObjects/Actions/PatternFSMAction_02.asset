@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d331a8a47ef24f449f5ccab6ec775c3, type: 3}
-  m_Name: MoveTo000
+  m_Name: PatternFSMAction_02
   m_EditorClassIdentifier: 
   m_SubPatternActions:
   - {fileID: 11400000, guid: 51363c306d05eb949abb0ced86902a8b, type: 2}
   - {fileID: 11400000, guid: 67fba9c346fe4e14cb0006f7fc53461e, type: 2}
-  - {fileID: 11400000, guid: 67fba9c346fe4e14cb0006f7fc53461e, type: 2}
+  - {fileID: 11400000, guid: accbf826f8b1aaf49a7a9622785da1cb, type: 2}

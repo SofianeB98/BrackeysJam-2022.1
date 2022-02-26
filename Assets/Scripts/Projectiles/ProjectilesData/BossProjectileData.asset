@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0af1a32e3d3d8b04c9c72c9d1f7c5876, type: 3}
-  m_Name: DashData
+  m_Script: {fileID: 11500000, guid: 38627cacb81cbf04b99c6749dbd5776a, type: 3}
+  m_Name: BossProjectileData
   m_EditorClassIdentifier: 
-  DashSpeed: 35
-  DashDistance: 6
-  DashLoadDuration: 0.09
-  DashRecoveryDuration: 0.2
-  InvincibleDuration: 0.5
-  DashDuration: 0.17142858
+  Damage: 25
+  DistanceToReach: 91.99
+  Speed: 10
+  DetectionSize: {x: 1, y: 1, z: 1}
+  DetectionPointOffset: {x: 0, y: 0, z: 0}
+  LifeTime: 9.198999

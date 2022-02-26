@@ -43,13 +43,11 @@ public class Projectile : MonoBehaviour
         mainModule.duration = m_LifeTime + 0.02f;
         mainModule.startSpeed = m_ProjectileData.Speed;
         mainModule.startLifetime = m_LifeTime;
-        
         m_Effect.gameObject.SetActive(true);
     }
     
     private void Detect()
     {
-        //Collider[] cols = Physics.OverlapCapsule(m_DetectionPoint, m_DetectionPoint + Vector3.up * m_ProjectileData.ProjectileHeight, m_ProjectileData.DetectionRadius, ~m_IgnoreLayer);
         var cols = Physics.OverlapBox(m_DetectionPoint + (transform.rotation * m_ProjectileData.DetectionPointOffset), m_ProjectileData.DetectionSize * 0.5f, transform.rotation, ~m_IgnoreLayer);
         
         if (cols == null || cols.Length == 0)
@@ -86,7 +84,6 @@ public class Projectile : MonoBehaviour
         
         if (m_CubeMesh != null)
             Gizmos.DrawWireMesh(m_CubeMesh, m_DetectionPoint + (transform.rotation * m_ProjectileData.DetectionPointOffset), transform.rotation, m_ProjectileData.DetectionSize);
-        //Gizmos.DrawWireSphere(m_DetectionPoint, m_ProjectileData != null ? m_ProjectileData.DetectionRadius : 1.0f);
-        //Gizmos.DrawWireSphere(m_DetectionPoint + Vector3.up * m_ProjectileData.ProjectileHeight, m_ProjectileData != null ? m_ProjectileData.DetectionRadius : 1.0f);
+        
     }
 }

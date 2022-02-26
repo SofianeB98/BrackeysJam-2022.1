@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 129891633}
   - component: {fileID: 129891635}
   - component: {fileID: 129891634}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: CameraBoundaries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +748,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35640
+  m_Name: pb_Mesh38982
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7426,11 +7426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &736265426 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9176291708253178515, guid: a5594f87b72b22749bcd40bab3281eb1, type: 3}
-  m_PrefabInstance: {fileID: 1029658527}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &875797484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7661,19 +7656,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8364147801872617513, guid: a5594f87b72b22749bcd40bab3281eb1, type: 3}
   m_PrefabInstance: {fileID: 1029658527}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1029658529
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736265426}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 15.340152, y: 1.5157256, z: 15.341947}
-  m_Center: {x: -0.00048675537, y: -0.6558567, z: -0.00009994507}
 --- !u!1 &1054249131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7336696523621540147, guid: 82a2617d547bdd54d918f652b3992eeb, type: 3}
@@ -7865,6 +7847,10 @@ PrefabInstance:
     - target: {fileID: 2223844622995282544, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3315035771998719282, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 3315035773559322206, guid: 98fe97976e078c04bac0d566e044184b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8585,7 +8571,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7771536, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

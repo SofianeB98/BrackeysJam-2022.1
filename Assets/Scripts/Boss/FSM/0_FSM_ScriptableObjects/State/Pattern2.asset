@@ -18,6 +18,6 @@ MonoBehaviour:
   - Conditions:
     - {fileID: 11400000, guid: 3a2b53b00b38db74da58df3f9232ba22, type: 2}
     TrueState: {fileID: 11400000, guid: 56044cb793c444f40b999414dce1a05b, type: 2}
-    FalseState: {fileID: 11400000, guid: 56044cb793c444f40b999414dce1a05b, type: 2}
+    FalseState: {fileID: 0}
   m_DebugColor: {r: 1, g: 0, b: 0, a: 1}
   TriggerTransition: 0

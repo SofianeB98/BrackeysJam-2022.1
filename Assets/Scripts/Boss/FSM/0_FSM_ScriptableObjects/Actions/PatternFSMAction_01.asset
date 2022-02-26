@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecc3f41baf8d71841bbef631b23c87be, type: 3}
-  m_Name: Move10010
+  m_Script: {fileID: 11500000, guid: 0d331a8a47ef24f449f5ccab6ec775c3, type: 3}
+  m_Name: PatternFSMAction_01
   m_EditorClassIdentifier: 
-  m_PointToReach: {x: 10, y: 0, z: 10}
-  m_DistanceThreshold: 1
+  m_SubPatternActions:
+  - {fileID: 11400000, guid: 51363c306d05eb949abb0ced86902a8b, type: 2}
