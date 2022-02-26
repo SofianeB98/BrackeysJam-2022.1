@@ -22,6 +22,7 @@ public struct SlashDetectionParameter
     public Vector3 m_SlashBoxDetection;
 }
 
+[System.Serializable]
 public struct SlashFXParameter
 {
     public GameObject VFX;

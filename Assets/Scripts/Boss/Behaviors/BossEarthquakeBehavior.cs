@@ -19,6 +19,8 @@ public class BossEarthquakeBehavior : BossBehavior
         var go = Instantiate(m_BossEarthquakeData.VFX,
             transform.position + (transform.rotation * m_BossEarthquakeData.PositionOffset), transform.rotation);
         Destroy(go, 2.0f);
+
+        m_AudioSource?.PlayOneShot(m_Sfx);
         
         var cols = Physics.OverlapSphere(transform.position + (transform.rotation * m_BossEarthquakeData.DetectionPositionOffset),
             m_BossEarthquakeData.DetectionRadius, m_AffectedLayer);

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum AbilityState
 {
@@ -23,6 +24,7 @@ public class CharacterAbility : MonoBehaviour
     [SerializeField] private Transform m_CameraReferential = null;
     [SerializeField] private CharacterController m_CharacterController = null;
     [SerializeField] private Animator m_CharacterAnimator = null;
+    [SerializeField] private AudioSource m_AudioSource;
 
     [Header("Melee Ability")] [SerializeField]
     private CharacterMeleeAbilityData m_MeleeAbilityData;
@@ -31,6 +33,9 @@ public class CharacterAbility : MonoBehaviour
     [SerializeField] private Transform m_UpDetectionPoint;
     [SerializeField] private LayerMask m_IgnoreLayer;
     [SerializeField] private float m_RangeAutoLock = 2.0f;
+    [SerializeField] private GameObject m_MeleeVFX;
+    [SerializeField] private AudioClip m_MeleeSFX;
+    [SerializeField] private AudioClip[] m_HitSFX;
     private float m_ExitComboDelay = 0f;
     private float m_CurrentComboPercent = 0f;
     private float m_DelayAfterEndCombo = 0f;
@@ -63,6 +68,9 @@ public class CharacterAbility : MonoBehaviour
 
         if (m_CharacterAnimator == null)
             m_CharacterAnimator = GetComponentInChildren<Animator>();
+
+        if (m_AudioSource == null)
+            m_AudioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -169,6 +177,8 @@ public class CharacterAbility : MonoBehaviour
                 m_CharacterAnimator.ResetTrigger(nextMeleeAttackTrigger);
                 m_CharacterAnimator.SetTrigger(cancelMeleeTrigger);
 
+                m_MeleeVFX.SetActive(false);
+                
                 CharacterEvents.UpdateCanMoveEvent?.Invoke(true);
                 break;
             case AbilityState.RANGE:
@@ -204,7 +214,7 @@ public class CharacterAbility : MonoBehaviour
         if (m_CurrentAbilityState == AbilityState.CAN_NOT_PERFORM_ABILITY || !m_MeleeAbilityAvailable)
             return;
 
-        Debug.Log("Melee Ability !!");
+        //Debug.Log("Melee Ability !!");
 
         CancelCurrentAction(AbilityState.MELEE);
 
@@ -224,6 +234,9 @@ public class CharacterAbility : MonoBehaviour
         m_ExitComboDelay = Mathf.Infinity;
         m_CurrentAbilityState = AbilityState.MELEE;
         m_CharacterAnimator.SetTrigger(meleeAttackTrigger);
+
+        if (!m_MeleeVFX.activeSelf)
+            m_MeleeVFX.SetActive(true);
 
         CharacterEvents.UpdateCanMoveEvent?.Invoke(false);
     }
@@ -266,6 +279,8 @@ public class CharacterAbility : MonoBehaviour
             var dir = (m_Boss.position - transform.position).normalized;
             transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
         }
+        
+        m_AudioSource?.PlayOneShot(m_MeleeSFX);
     }
 
     public void DetectMeleeCollision()
@@ -283,6 +298,10 @@ public class CharacterAbility : MonoBehaviour
             if (c.TryGetComponent(out Health h))
             {
                 h.ReduceHealth(m_MeleeAbilityData.Damage + m_MeleeAbilityData.Damage * m_CurrentComboPercent * 0.01f);
+                
+                if (m_HitSFX != null && m_HitSFX.Length > 0)
+                    m_AudioSource?.PlayOneShot(m_HitSFX[Random.Range(0, m_HitSFX.Length)]);
+                
                 if (m_CurrentMunition < m_RangeAbilityData.MaxMunition)
                 {
                     m_CurrentMunition = Mathf.Clamp(m_CurrentMunition + 1, 0, m_RangeAbilityData.MaxMunition);

@@ -13,6 +13,8 @@ public class BossMeleeAtkBehavior : BossBehavior
         var cols = Physics.OverlapSphere(transform.position + (transform.rotation * m_BossMeleeAtkData.DetectionPositionOffset),
             m_BossMeleeAtkData.DetectionRadius, m_AffectedLayer);
 
+        m_AudioSource?.PlayOneShot(m_Sfx);
+        
         foreach (var c in cols)
         {
             if (!c.TryGetComponent(out Health hp))

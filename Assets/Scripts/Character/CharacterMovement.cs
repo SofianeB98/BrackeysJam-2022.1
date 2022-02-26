@@ -12,7 +12,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Transform m_CameraReferential = null;
     [SerializeField] private CharacterController m_CharacterController = null;
     [SerializeField] private Animator m_CharacterAnimator = null;
-
+    [SerializeField] private AudioSource m_AudioSource;
+    
     [Header("Movement Data")] [SerializeField]
     private CharacterMovementData m_MovementData;
     [SerializeField] private bool m_EnableSuperSpeed = false;
@@ -21,6 +22,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private int m_IgnoreCollisionsLayer = 7;
     [SerializeField] private int m_DefaultLayer = 6;
     [SerializeField] private GameObject m_DashVFX;
+    [SerializeField] private AudioClip m_DashSFX;
     
     private Vector3 m_DashDirection = Vector3.forward;
     private Vector3 m_CurrentDirection = Vector3.zero;
@@ -49,6 +51,9 @@ public class CharacterMovement : MonoBehaviour
         if (m_CharacterInput == null)
             m_CharacterInput = GetComponent<CharacterInput>();
 
+        if (m_AudioSource == null)
+            m_AudioSource = GetComponent<AudioSource>();
+        
         m_Translation = transform.forward;
         m_DefaultCollisionFlags = m_CharacterController.collisionFlags;
         m_DefaultLayer = gameObject.layer;
@@ -235,6 +240,9 @@ public class CharacterMovement : MonoBehaviour
         m_IsDashing = true;
 
         m_DashVFX.SetActive(true);
+        
+        if (m_DashSFX != null)
+            m_AudioSource?.PlayOneShot(m_DashSFX);
         
         gameObject.layer = m_IgnoreCollisionsLayer;
         m_DashRecoveryTimer = 0f;

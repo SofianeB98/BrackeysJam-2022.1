@@ -10,6 +10,8 @@ public class BossSwordCrossSlashBehavior : BossBehavior
     
     [Header("Gizmo")] 
     [SerializeField] private Mesh m_CubeMesh;
+
+    private bool m_SfxPlayed = false;
     
     public override void Detect(BossBehaviorManager bbm)
     {
@@ -20,9 +22,22 @@ public class BossSwordCrossSlashBehavior : BossBehavior
             return;
         }
 
-        var fx = m_BossSwordCrossSlashData.SlashFxParameters[idx];
-        var go = Instantiate(fx.VFX, transform.position + (transform.rotation * fx.PositionOffset), transform.rotation);
-        Destroy(go, 2.0f);
+        if (!m_SfxPlayed)
+        {
+            m_AudioSource?.PlayOneShot(m_Sfx);
+            m_SfxPlayed = true;
+        }
+
+        if (idx == 1)
+            m_SfxPlayed = false;
+
+        if (m_BossSwordCrossSlashData.SlashFxParameters != null &&
+            m_BossSwordCrossSlashData.SlashFxParameters.Length > 1)
+        {
+            var fx = m_BossSwordCrossSlashData.SlashFxParameters[idx];
+            var go = Instantiate(fx.VFX, transform.position + (transform.rotation * fx.PositionOffset), transform.rotation);
+            Destroy(go, 2.0f);
+        }
         
         var slash = m_BossSwordCrossSlashData.SlashDetectionParameters[idx];
         var cols = Physics.OverlapBox(transform.position + (transform.rotation * slash.m_OffsetPosition), slash.m_SlashBoxDetection * 0.5f, transform.rotation, m_AffectedLayer);
