@@ -37,6 +37,9 @@ public class BossBehaviorManager : MonoBehaviour
     [Header("Stats")]
     [SerializeField] private Health m_Health;
     [SerializeField] private float damage = 20.0f;
+
+    [Header("FX")] 
+    public GameObject MeleeVFX;
     
     
     public Health Health
@@ -125,6 +128,11 @@ public class BossBehaviorManager : MonoBehaviour
     public void TriggerLineWave()
     {
         m_BossLineWaveBehavior.TriggerRange();
+    }
+
+    public void SetActiveMeleeVFX()
+    {
+        MeleeVFX.SetActive(!MeleeVFX.activeSelf);
     }
     
     #endregion

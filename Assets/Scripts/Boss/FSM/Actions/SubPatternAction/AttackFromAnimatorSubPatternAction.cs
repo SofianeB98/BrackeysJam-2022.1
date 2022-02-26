@@ -7,6 +7,8 @@ public class AttackFromAnimatorSubPatternAction : SubPatternAction
 {
     [SerializeField] private string m_AnimStateToTrigger = "Attack";
     [SerializeField] private float m_OffsetDuration = -0.1f;
+    [SerializeField] private bool m_EnableSwordTrail = true;
+
 
     private float m_AnimDuration = 0f;
     private bool m_DurationSetted = false;
@@ -21,6 +23,8 @@ public class AttackFromAnimatorSubPatternAction : SubPatternAction
         m_AnimDuration = Mathf.Infinity;
         
         fsmController.Boss.Animator.Play(m_AnimStateToTrigger);
+        if (m_EnableSwordTrail)
+            fsmController.Boss.MeleeVFX.SetActive(true);
     }
 
     public override SubPatternActionState Execute(FSMController fsmController)
@@ -37,6 +41,7 @@ public class AttackFromAnimatorSubPatternAction : SubPatternAction
         if (m_ElapsedDuration >= m_AnimDuration)
         {
             Debug.Log("ENDED !!");
+            fsmController.Boss.MeleeVFX.SetActive(false);
             return SubPatternActionState.ENDED;
         }
         
