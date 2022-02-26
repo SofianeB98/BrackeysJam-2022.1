@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d331a8a47ef24f449f5ccab6ec775c3, type: 3}
+  m_Name: PatternFSMAction_01
+  m_EditorClassIdentifier: 
+  m_SubPatternActions:
+  - {fileID: 11400000, guid: 117a62659c42cd64bb992427ea759559, type: 2}
+  - {fileID: 11400000, guid: a0a7965068b3b99428291eed2e86edbf, type: 2}
+  - {fileID: 11400000, guid: 117a62659c42cd64bb992427ea759559, type: 2}
+  - {fileID: 11400000, guid: a0a7965068b3b99428291eed2e86edbf, type: 2}
