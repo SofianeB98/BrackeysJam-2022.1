@@ -5,16 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RotateToTargetSubPatternAction", menuName = "FSM/FSM Pattern Actions/New RotateToTargetSubPatternAction", order = 0)]
 public class RotateToTargetSubPatternAction : SubPatternAction
 {
+    [SerializeField] private float m_SpeedToRotate = 90.0f;
     [SerializeField] private float m_TimeToReach = 1.0f;
-    [SerializeField] private int m_RepeatCount = 1;
-    [SerializeField] private float m_DelayBeforeRepeat = 0f;
 
-    private Vector3 m_TargetPosition = Vector3.zero;
-    private float m_DegreesToRotate = 90.0f;
-    private float m_CurrentDegree = 0f;
-    private int m_CurrentCount = 0;
-    private float m_CurrentDelayBeforeRepeat = 0f;
-
+    private Quaternion m_TargetRot;
+    
     private void OnValidate()
     {
         if (m_TimeToReach <= Mathf.Epsilon)
@@ -23,32 +18,20 @@ public class RotateToTargetSubPatternAction : SubPatternAction
 
     public override void OnEnter(FSMController fsmController)
     {
-        m_CurrentCount = 0;
-        m_CurrentDegree = 0f;
-        m_CurrentDelayBeforeRepeat = 0f;
-
-        m_TargetPosition = fsmController.Boss.Target.position;
-        m_DegreesToRotate = Quaternion.LookRotation((m_TargetPosition - fsmController.Boss.transform.position).normalized, Vector3.up).eulerAngles.y;
+        var dir = fsmController.Boss.Target.position - fsmController.Boss.transform.position;
+        dir.y = 0;
+        m_TargetRot = Quaternion.LookRotation(dir.normalized, Vector3.up);
     }
 
     public override SubPatternActionState Execute(FSMController fsmController)
     {
-        if (m_CurrentCount >= m_RepeatCount)
-            return SubPatternActionState.ENDED;
-
-        if (m_CurrentDelayBeforeRepeat > Time.time)
-            return SubPatternActionState.PERFORMED;
+        float rotationDelta = Time.deltaTime * m_SpeedToRotate / m_TimeToReach;
         
-        float rotationDelta = Time.deltaTime * m_DegreesToRotate / m_TimeToReach;
-        m_CurrentDegree = Mathf.MoveTowards(m_CurrentDegree, m_DegreesToRotate, rotationDelta);
+        fsmController.Boss.transform.rotation = Quaternion.RotateTowards(fsmController.Boss.transform.rotation, m_TargetRot, rotationDelta);
         
-        fsmController.Boss.transform.Rotate(Vector3.up, rotationDelta);
-        
-        if (Mathf.Approximately(m_CurrentDegree, m_DegreesToRotate))
+        if (Mathf.Abs(Quaternion.Angle(fsmController.Boss.transform.rotation, m_TargetRot)) <= 1f)
         {
-            m_CurrentCount++;
-            m_CurrentDegree = 0f;
-            m_CurrentDelayBeforeRepeat = Time.time + m_DelayBeforeRepeat;
+            return SubPatternActionState.ENDED;
         }
         
         return SubPatternActionState.PERFORMED;
@@ -56,7 +39,6 @@ public class RotateToTargetSubPatternAction : SubPatternAction
 
     public override void OnEnd(FSMController fsmController)
     {
-        m_CurrentCount = 0;
-        m_CurrentDegree = 0f;
+        
     }
 }
