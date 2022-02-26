@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44bbf34ab7585f41924ec30542a6e44, type: 3}
   m_Name: Phase4
   m_EditorClassIdentifier: 
-  m_Actions: []
-  m_Transitions: []
+  m_Actions:
+  - {fileID: 11400000, guid: 0743b7909cb485d46bb8cb4b4ca591b0, type: 2}
+  m_Transitions:
+  - Conditions:
+    - {fileID: 11400000, guid: 821589a977b826a4f93f76ce3910adde, type: 2}
+    TrueState: {fileID: 11400000, guid: 6296f4719ce3fa144ab9711ff3e22862, type: 2}
+    FalseState: {fileID: 0}
+  - Conditions: []
+    TrueState: {fileID: 11400000}
+    FalseState: {fileID: 0}
   m_DebugColor: {r: 1, g: 0, b: 0, a: 1}
   TriggerTransition: 0
