@@ -20,17 +20,16 @@ public class Projectile : MonoBehaviour
     [Header("Gizmo")] 
     [SerializeField] private Mesh m_CubeMesh;
     
-    private float m_LifeTime = 1.0f;
     private Vector3 m_DetectionPoint;
+
+    private bool m_CanDestroy = false;
     
     private void Start()
     {
-        m_LifeTime = (m_ProjectileData.DistanceToReach / m_ProjectileData.Speed);
-        
         if (!m_IsVfxGraph)
             InitializeParticleSystem();
         
-        Destroy(gameObject, m_LifeTime + 0.02f);
+        Destroy(gameObject, m_ProjectileData.LifeTime + 1.0f);
         m_DetectionPoint = transform.position;
     }
 
@@ -38,11 +37,18 @@ public class Projectile : MonoBehaviour
     {
         m_IsNotReal = v;
         if (ShaderGraphFX != null)
+        {
             ShaderGraphFX.SetBool("Glitch", m_IsNotReal);
+            ShaderGraphFX.SetFloat("CracksLifetime", m_ProjectileData.LifeTime);
+            ShaderGraphFX.SetFloat("SpikesLifetime", m_ProjectileData.LifeTime);
+        }
     }
     
     private void Update()
     {
+        if (m_CanDestroy)
+            return;
+        
         if (!m_IsNotReal)
             Detect();
         
@@ -56,9 +62,9 @@ public class Projectile : MonoBehaviour
         if (m_IsNotReal)
             mainModule = m_GlitchedEffect.main;
 
-        mainModule.duration = m_LifeTime + 0.02f;
+        mainModule.duration = m_ProjectileData.LifeTime + 0.02f;
         mainModule.startSpeed = m_ProjectileData.Speed;
-        mainModule.startLifetime = m_LifeTime;
+        mainModule.startLifetime = m_ProjectileData.LifeTime;
         if (m_IsNotReal)
             m_GlitchedEffect.gameObject.SetActive(true);
         else
@@ -67,6 +73,9 @@ public class Projectile : MonoBehaviour
     
     private void Detect()
     {
+        if (m_CanDestroy)
+            return;
+        
         var cols = Physics.OverlapBox(m_DetectionPoint + (transform.rotation * m_ProjectileData.DetectionPointOffset), m_ProjectileData.DetectionSize * 0.5f, transform.rotation, ~m_IgnoreLayer);
         
         if (cols == null || cols.Length == 0)
@@ -93,7 +102,8 @@ public class Projectile : MonoBehaviour
     
     private void DestroyProjectile()
     {
-        Destroy(gameObject);
+        m_CanDestroy = true;
+        Destroy(gameObject, 1.0f);
     }
 
     private void OnDrawGizmos()
