@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6f46eac9a1b784fb0e7216ed7e428d, type: 3}
-  m_Name: Earthquake_2
+  m_Script: {fileID: 11500000, guid: 3518ae4ec5d0cee489727fcf09b9ea39, type: 3}
+  m_Name: MoveToTarget
   m_EditorClassIdentifier: 
-  m_AnimStateToTrigger: Earthquake
-  m_OffsetDuration: 0
+  m_UpdateDestinationEveryNFrame: 1
+  m_DistanceThreshold: 2.5
