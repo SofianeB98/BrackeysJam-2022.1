@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6506853d90c1fb547b79430cd300653d, type: 3}
-  m_Name: DashToPointSubPatternAction 5
+  m_Script: {fileID: 11500000, guid: 83febb12e3142d045b47bb32981b914d, type: 3}
+  m_Name: TpTarget
   m_EditorClassIdentifier: 
-  m_PointToReach: {x: -13, y: 0, z: 5}
-  m_DashSpeed: 76.4
-  m_DashLoadDuration: 0.1

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c7cff056335a2b4496baa195d09dae2, type: 3}
   m_Name: BossDashData
   m_EditorClassIdentifier: 
-  DashSpeed: 50
+  DashSpeed: 1000
   DashLoadDuration: 0.2
