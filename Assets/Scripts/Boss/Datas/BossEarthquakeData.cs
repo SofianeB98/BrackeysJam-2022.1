@@ -11,4 +11,8 @@ public class BossEarthquakeData : ScriptableObject
     [Header("Detection")] 
     public float DetectionRadius = 5.0f;
     public Vector3 DetectionPositionOffset = Vector3.zero;
+
+    [Header("FX")] 
+    public GameObject VFX;
+    public Vector3 PositionOffset;
 }

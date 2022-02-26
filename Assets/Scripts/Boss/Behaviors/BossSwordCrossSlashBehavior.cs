@@ -20,6 +20,9 @@ public class BossSwordCrossSlashBehavior : BossBehavior
             return;
         }
 
+        var fx = m_BossSwordCrossSlashData.SlashFxParameters[idx];
+        var go = Instantiate(fx.VFX, transform.position + (transform.rotation * fx.PositionOffset), transform.rotation);
+        
         var slash = m_BossSwordCrossSlashData.SlashDetectionParameters[idx];
         var cols = Physics.OverlapBox(transform.position + (transform.rotation * slash.m_OffsetPosition), slash.m_SlashBoxDetection * 0.5f, transform.rotation, m_AffectedLayer);
         foreach (var c in cols)

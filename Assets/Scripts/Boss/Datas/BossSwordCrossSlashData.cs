@@ -10,6 +10,9 @@ public class BossSwordCrossSlashData : ScriptableObject
 
     [Header("Detection")] 
     public SlashDetectionParameter[] SlashDetectionParameters;
+
+    [Header("FX")] 
+    public SlashFXParameter[] SlashFxParameters;
 }
 
 [System.Serializable]
@@ -17,4 +20,12 @@ public struct SlashDetectionParameter
 {
     public Vector3 m_OffsetPosition;
     public Vector3 m_SlashBoxDetection;
+}
+
+public struct SlashFXParameter
+{
+    public GameObject VFX;
+    public Vector3 PositionOffset;
+
+    // SFX
 }

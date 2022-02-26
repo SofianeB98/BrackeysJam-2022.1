@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     [Header("Projectile Data")] 
     [SerializeField] private ProjectileData m_ProjectileData;
     [SerializeField] private LayerMask m_IgnoreLayer;
+    [SerializeField] private bool m_IsVfxGraph = false;
     [SerializeField] private ParticleSystem m_Effect;
     [SerializeField] private bool m_IsNotReal = false;
     
@@ -22,7 +23,9 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         m_LifeTime = (m_ProjectileData.DistanceToReach / m_ProjectileData.Speed);
-        InitializeParticleSystem();
+        
+        if (!m_IsVfxGraph)
+            InitializeParticleSystem();
         
         Destroy(gameObject, m_LifeTime + 0.02f);
         m_DetectionPoint = transform.position;
@@ -73,6 +76,8 @@ public class Projectile : MonoBehaviour
     private void Move()
     {
         m_DetectionPoint += Time.deltaTime * m_ProjectileData.Speed * transform.forward;
+        if (m_IsVfxGraph)
+            transform.position = m_DetectionPoint;
     }
     
     private void DestroyProjectile()

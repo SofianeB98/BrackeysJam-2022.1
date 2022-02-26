@@ -15,6 +15,9 @@ public class BossEarthquakeBehavior : BossBehavior
             Debug.LogWarning("Earthquake data is null, please fill it !");
             return;
         }
+
+        var go = Instantiate(m_BossEarthquakeData.VFX,
+            transform.position + (transform.rotation * m_BossEarthquakeData.PositionOffset), transform.rotation);
         
         var cols = Physics.OverlapSphere(transform.position + (transform.rotation * m_BossEarthquakeData.DetectionPositionOffset),
             m_BossEarthquakeData.DetectionRadius, m_AffectedLayer);
