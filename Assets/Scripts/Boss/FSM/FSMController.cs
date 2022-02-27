@@ -5,31 +5,53 @@ using UnityEngine;
 
 public class FSMController : MonoBehaviour
 {
-    [Header("FSM")]
-    [SerializeField] private FSMState m_InitialState;
+    [Header("FSM")] [SerializeField] private FSMState m_InitialState;
     [SerializeField] private FSMState m_RemainingState;
     private FSMState m_CurrentState;
     public FSMState CurrentState => m_CurrentState;
     private bool m_IsActive = false;
 
-    [Header("IA Behavior")]
-    [SerializeField] private BossBehaviorManager m_Boss;
+    [Header("IA Behavior")] [SerializeField]
+    private BossBehaviorManager m_Boss;
+
     public BossBehaviorManager Boss => m_Boss;
-    
+
     private void Start()
     {
         m_IsActive = true;
         TransitionToState(m_InitialState);
     }
 
+    private void OnEnable()
+    {
+        CharacterEvents.HeroDieEvent += HeroDieEvent;
+    }
+
+    private void OnDisable()
+    {
+        CharacterEvents.HeroDieEvent -= HeroDieEvent;
+    }
+
+    private void HeroDieEvent()
+    {
+        m_IsActive = false;
+    }
+
+
     private void Update()
     {
         if (!m_IsActive)
             return;
 
+        if (Boss.Health.IsDead)
+        {
+            m_IsActive = false;
+            return;
+        }
+
         if (m_CurrentState == null)
             return;
-        
+
         m_CurrentState.UpdateState(this);
     }
 
@@ -40,11 +62,11 @@ public class FSMController : MonoBehaviour
 
         if (m_CurrentState != null)
             m_CurrentState.TriggerTransition = false;
-        
+
         m_CurrentState = targetState;
         m_CurrentState.OnEnterState(this);
     }
-    
+
     private void OnDrawGizmos()
     {
         if (m_CurrentState == null)

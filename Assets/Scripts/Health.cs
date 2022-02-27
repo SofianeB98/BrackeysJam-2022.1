@@ -29,6 +29,7 @@ public class Health : MonoBehaviour
     }
 
     private bool m_IsDead = false;
+    public bool IsDead => m_IsDead;
     
     private void Awake()
     {

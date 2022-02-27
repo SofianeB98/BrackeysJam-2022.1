@@ -20,12 +20,18 @@ public class CharacterInput : MonoBehaviour, PlayerInputs.IPlayerActions
     [SerializeField] private bool m_UseGamepad = false;
     private PlayerInputs m_GameInput;
 
+    public bool IsActive = true;
+    
     private void OnValidate()
     {
         if (m_GameInput != null)
             m_GameInput.bindingMask = new InputBinding {groups = m_UseGamepad ? GAMEPAD_SCHEME : KEYBOARD_MOUSE_SCHEME};
     }
 
+    public void DisableCharacter()
+    {
+        IsActive = false;
+    }
 
     private void OnEnable()
     {

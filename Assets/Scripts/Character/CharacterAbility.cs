@@ -99,6 +99,13 @@ public class CharacterAbility : MonoBehaviour
 
     private void Update()
     {
+        if (!m_CharacterInput.IsActive)
+        {
+            CancelCurrentAction(AbilityState.CAN_NOT_PERFORM_ABILITY);
+            m_CurrentAbilityState = AbilityState.CAN_NOT_PERFORM_ABILITY;
+            return;
+        }
+        
         if (!m_MeleeAbilityAvailable && Time.time > m_DelayAfterEndCombo)
         {
             m_MeleeAbilityAvailable = true;
