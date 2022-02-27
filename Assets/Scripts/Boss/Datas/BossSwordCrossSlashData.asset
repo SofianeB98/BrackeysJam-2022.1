@@ -22,5 +22,3 @@ MonoBehaviour:
   SlashFxParameters:
   - VFX: {fileID: 3793301481202264382, guid: 17a933ff93556bf41b614075c692cdc1, type: 3}
     PositionOffset: {x: 0, y: 0, z: 0}
-  - VFX: {fileID: 3793301481202264382, guid: 17a933ff93556bf41b614075c692cdc1, type: 3}
-    PositionOffset: {x: 0, y: 0, z: 0}
