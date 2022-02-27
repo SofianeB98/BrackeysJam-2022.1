@@ -11,12 +11,17 @@ public class LifeBar : MonoBehaviour
     [SerializeField] float waitTime = 2f;
     private bool m_IsInitialized = false;
     
+    private Coroutine m_Co;
+    
     public void UpdateSlider(Health hp)
     {
         if (!m_IsInitialized) Initialize(hp);
 
         m_LifeSlider.value = Mathf.Clamp(hp.CurrentHealth, 0f, hp.StartingHealth);
-        StartCoroutine("LerpPreviewHp");
+        if (m_Co != null)
+            StopCoroutine(m_Co);
+        
+        m_Co = StartCoroutine(LerpPreviewHp());
     }
 
     IEnumerator LerpPreviewHp()
