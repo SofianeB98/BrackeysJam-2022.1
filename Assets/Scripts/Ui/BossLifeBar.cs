@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class BossLifeBar : MonoBehaviour
 {
-
-
     [SerializeField] private Slider[] m_LifeSliders;
     [SerializeField] private Slider[] m_LifeSliderPreview;
     [SerializeField] private AnimationCurve easeLerp;
     [SerializeField] float waitTime = 2f;
     private bool m_IsInitialized = false;
+
+    private Coroutine m_Co;
     
     public void UpdateSlider(Health hp)
     {
@@ -21,32 +21,41 @@ public class BossLifeBar : MonoBehaviour
         {
             s.value = Mathf.Clamp(hp.CurrentHealth, s.minValue, s.maxValue);
         }
+
+        if (m_Co != null)
+            StopCoroutine(m_Co);
         
-        //StartCoroutine("LerpPreviewHp");
+        m_Co = StartCoroutine(LerpPreviewHp());
     }
 
-    /*IEnumerator LerpPreviewHp()
+    IEnumerator LerpPreviewHp()
     {
         float elapsedTime = 0;
-        float waitTime = 1;
         
         while (elapsedTime < waitTime)
         {
-            if (m_LifeSliderPreview != null)
-                m_LifeSliderPreview.value = Mathf.Lerp(m_LifeSliderPreview.value, m_LifeSlider.value, easeLerp.Evaluate(elapsedTime / waitTime));
+            for (int i = 0; i < m_LifeSliderPreview.Length; i++) 
+            {
+                var p = m_LifeSliderPreview[i];
+                if (p == null)
+                    continue;
+                    
+                p.value = Mathf.Lerp(p.value, m_LifeSliders[i].value, easeLerp.Evaluate(elapsedTime / waitTime));
+            }
 
             elapsedTime += Time.deltaTime;
 
             yield return null;
         }
+
         yield return null;
-    }*/
+    }
 
     private void Initialize(Health hp)
     {
         m_IsInitialized = true;
 
-        
+
         int seq = m_LifeSliders.Length;
         float delta = hp.StartingHealth / seq;
 
@@ -57,10 +66,9 @@ public class BossLifeBar : MonoBehaviour
 
             if (i + 1 >= seq)
                 m_LifeSliders[i].minValue = 0;
+
+            m_LifeSliderPreview[i].maxValue = m_LifeSliders[i].maxValue;
+            m_LifeSliderPreview[i].minValue = m_LifeSliders[i].minValue;
         }
-        
-        //m_LifeSliderPreview.maxValue = hp.StartingHealth;
     }
-
 }
-
