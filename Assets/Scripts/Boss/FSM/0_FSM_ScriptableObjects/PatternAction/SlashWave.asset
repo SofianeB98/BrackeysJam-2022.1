@@ -16,5 +16,6 @@ MonoBehaviour:
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: b5ff0f139fa3bdf4e99dcee26c117142, type: 3}
     LaunchAngleFromForward: 0
     DelayBeforeLaunch: 0
+    PercentChanceNotReal: 50
   m_RepeatCount: 1
   m_DelayBeforeRepeat: 0

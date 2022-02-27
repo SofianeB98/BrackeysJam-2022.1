@@ -16,26 +16,34 @@ MonoBehaviour:
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: 26350f501b3ff8b4cb18a3b762eb38a6, type: 3}
     LaunchAngleFromForward: 30
     DelayBeforeLaunch: 0
+    PercentChanceNotReal: 50
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: 26350f501b3ff8b4cb18a3b762eb38a6, type: 3}
     LaunchAngleFromForward: 75
     DelayBeforeLaunch: 0
+    PercentChanceNotReal: 50
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: 26350f501b3ff8b4cb18a3b762eb38a6, type: 3}
     LaunchAngleFromForward: 120
     DelayBeforeLaunch: 0
+    PercentChanceNotReal: 50
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: 26350f501b3ff8b4cb18a3b762eb38a6, type: 3}
     LaunchAngleFromForward: 165
     DelayBeforeLaunch: 0
+    PercentChanceNotReal: 50
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: 26350f501b3ff8b4cb18a3b762eb38a6, type: 3}
     LaunchAngleFromForward: 210
     DelayBeforeLaunch: 0
+    PercentChanceNotReal: 50
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: 26350f501b3ff8b4cb18a3b762eb38a6, type: 3}
     LaunchAngleFromForward: 255
     DelayBeforeLaunch: 0
+    PercentChanceNotReal: 50
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: 26350f501b3ff8b4cb18a3b762eb38a6, type: 3}
     LaunchAngleFromForward: 300
     DelayBeforeLaunch: 0
+    PercentChanceNotReal: 50
   - ProjectilePrefab: {fileID: 4409553192158743812, guid: 26350f501b3ff8b4cb18a3b762eb38a6, type: 3}
     LaunchAngleFromForward: 345
     DelayBeforeLaunch: 0
+    PercentChanceNotReal: 50
   m_RepeatCount: 1
   m_DelayBeforeRepeat: 0
