@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[CreateAssetMenu(fileName = "DashToTargetSubPatternAction", menuName = "FSM/FSM Pattern Actions/New DashToTargetSubPatternAction", order = 0)]
+[CreateAssetMenu(fileName = "DashToTargetSubPatternAction",
+    menuName = "FSM/FSM Pattern Actions/New DashToTargetSubPatternAction", order = 0)]
 public class DashToTargetSubPatternAction : SubPatternAction
 {
     private const float RANGE_RANDOM = 2.0f;
@@ -16,7 +17,7 @@ public class DashToTargetSubPatternAction : SubPatternAction
     private float m_CurrentLoadDuration = 0f;
     private float m_Distance = 0f;
     private Vector3 m_NewPos = Vector3.zero;
-    
+
     public override void OnEnter(FSMController fsmController)
     {
         var dashData = fsmController.Boss.DashData;
@@ -31,6 +32,7 @@ public class DashToTargetSubPatternAction : SubPatternAction
         m_CurrentDuration = 0f;
         m_NewPos = m_StartPos;
         fsmController.Boss.transform.rotation = Quaternion.LookRotation(m_Direction, Vector3.up);
+        fsmController.Boss.DashVFX.SetActive(true);
     }
 
     public override SubPatternActionState Execute(FSMController fsmController)
@@ -41,9 +43,10 @@ public class DashToTargetSubPatternAction : SubPatternAction
             dir.y = 0;
             dir.Normalize();
             fsmController.Boss.transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
+            fsmController.Boss.DashVFX.SetActive(false);
             return SubPatternActionState.ENDED;
         }
-        
+
         if (m_CurrentLoadDuration > Time.time)
             return SubPatternActionState.PERFORMED;
 
@@ -54,6 +57,7 @@ public class DashToTargetSubPatternAction : SubPatternAction
             m_NewPos = m_PointToReach;
             m_CurrentDuration = m_DashDuration + 0.1f;
         }
+
         fsmController.transform.position = m_NewPos;
 
         return SubPatternActionState.PERFORMED;
@@ -62,8 +66,9 @@ public class DashToTargetSubPatternAction : SubPatternAction
     public override void OnEnd(FSMController fsmController)
     {
         m_CurrentDuration = 0f;
+        fsmController.Boss.DashVFX.SetActive(false);
     }
-    
+
     private void RandomPoint(Vector3 center, float range, FSMController fsmController, out Vector3 result)
     {
         for (int i = 0; i < 100; i++)
@@ -81,6 +86,7 @@ public class DashToTargetSubPatternAction : SubPatternAction
                 return;
             }
         }
+
         result = center;
     }
 }

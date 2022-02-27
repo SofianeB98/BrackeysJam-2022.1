@@ -40,7 +40,8 @@ public class BossBehaviorManager : MonoBehaviour
 
     [Header("FX")] 
     public GameObject MeleeVFX;
-    
+
+    public GameObject DashVFX;
     
     public Health Health
     {

@@ -29,6 +29,7 @@ public class DashToPointSubPatternAction : SubPatternAction
         m_CurrentDuration = 0f;
         m_NewPos = m_StartPos;
         fsmController.Boss.transform.rotation = Quaternion.LookRotation(m_Direction, Vector3.up);
+        fsmController.Boss.DashVFX.SetActive(true);
     }
 
     public override SubPatternActionState Execute(FSMController fsmController)
@@ -54,5 +55,6 @@ public class DashToPointSubPatternAction : SubPatternAction
     public override void OnEnd(FSMController fsmController)
     {
         m_CurrentDuration = 0f;
+        fsmController.Boss.DashVFX.SetActive(false);
     }
 }
