@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MeleeAbilityData
   m_EditorClassIdentifier: 
   Damage: 10
-  AdditionnalDamageComboPercent: 15
-  DelayBeforeExitCombo: 0.5
-  DelayAfterEndCombo: 0.5
+  AdditionnalDamageComboPercent: 10
+  DelayBeforeExitCombo: 0
+  DelayAfterEndCombo: 0.2
   DetectionRadius: 0.8
   DetectionPositionOffset: {x: 0, y: 0.86, z: 0.9}

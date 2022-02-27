@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa707282127b26940a0aa7686d33370b, type: 3}
   m_Name: HealthDecisionToPhase2
   m_EditorClassIdentifier: 
-  m_HealthThresholdPercent: 50
+  m_HealthThresholdPercent: 75
   m_CurrentPercentSmallerOrEqualThreshold: 1
