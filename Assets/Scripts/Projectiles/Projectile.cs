@@ -39,8 +39,6 @@ public class Projectile : MonoBehaviour
         if (ShaderGraphFX != null)
         {
             ShaderGraphFX.SetBool("Glitch", m_IsNotReal);
-            ShaderGraphFX.SetFloat("CracksLifetime", m_ProjectileData.LifeTime);
-            ShaderGraphFX.SetFloat("SpikesLifetime", m_ProjectileData.LifeTime);
         }
     }
     

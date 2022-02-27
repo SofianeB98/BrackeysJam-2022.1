@@ -208,12 +208,40 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
       propertyPath: m_PropertySheet.m_Bool.m_Array.Array.data[0].m_Name
       value: Glitch
       objectReference: {fileID: 0}
     - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Name
+      value: SpikesLifetime
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Name
+      value: CracksLifetime
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
       propertyPath: m_PropertySheet.m_Bool.m_Array.Array.data[0].m_Overridden
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518449663687328094, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Overridden
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2518449663687328095, guid: 23ba5a9100a7b054a824e5b3a34b9942, type: 3}
       propertyPath: m_LocalPosition.x
