@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517ecb10d6944fb48bfad2f2cb61ae4e, type: 3}
   m_Name: BossMeleeAtkData
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 40
   DetectionRadius: 1.76
   DetectionPositionOffset: {x: 0, y: 0, z: 2.67}

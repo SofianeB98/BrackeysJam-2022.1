@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38627cacb81cbf04b99c6749dbd5776a, type: 3}
   m_Name: LineWave
   m_EditorClassIdentifier: 
-  Damage: 20
+  Damage: 15
   DistanceToReach: 2000
   Speed: 25
   DetectionSize: {x: 1.21, y: 2, z: 4.41}

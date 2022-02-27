@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38627cacb81cbf04b99c6749dbd5776a, type: 3}
   m_Name: SlashWave
   m_EditorClassIdentifier: 
-  Damage: 25
+  Damage: 20
   DistanceToReach: 50
   Speed: 20
   DetectionSize: {x: 2.84, y: 4.02, z: 1.12}

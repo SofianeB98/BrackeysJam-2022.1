@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c4be13782c4f48907c0accbe61e7e3, type: 3}
   m_Name: BossSwordCrossSlashData
   m_EditorClassIdentifier: 
-  DamageFirstSlash: 10
+  DamageFirstSlash: 15
   DamageSecondSlash: 10
   SlashDetectionParameters:
   - m_OffsetPosition: {x: -0.32, y: 0, z: 2.58}
