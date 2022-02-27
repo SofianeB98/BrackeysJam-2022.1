@@ -112,7 +112,7 @@ MonoBehaviour:
   HealthUpdatedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_StartingHealth: 100
+  m_StartingHealth: 1000
   m_AudioSource: {fileID: 8883842647057553286}
   m_HittedClips:
   - {fileID: 8300000, guid: 608cc8864e214fe469c181c8704401de, type: 3}

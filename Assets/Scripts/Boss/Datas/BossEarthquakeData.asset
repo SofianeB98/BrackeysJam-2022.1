@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d9beb8829913743a923eff13c19992, type: 3}
   m_Name: BossEarthquakeData
   m_EditorClassIdentifier: 
-  Damage: 15
-  DetectionRadius: 5.14
+  Damage: 50
+  DetectionRadius: 4.2
   DetectionPositionOffset: {x: 0, y: 0, z: 0}
   VFX: {fileID: 4109373070494766330, guid: c03e71f64c23858428fecb4e9b0bd6a0, type: 3}
   PositionOffset: {x: 0, y: 0, z: 0}

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BossMeleeAtkData
   m_EditorClassIdentifier: 
   Damage: 5
-  DetectionRadius: 2.42
-  DetectionPositionOffset: {x: 0, y: 0, z: 1.57}
+  DetectionRadius: 1.76
+  DetectionPositionOffset: {x: 0, y: 0, z: 2.67}

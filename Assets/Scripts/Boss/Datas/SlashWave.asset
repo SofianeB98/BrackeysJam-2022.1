@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 25
   DistanceToReach: 50
-  Speed: 15
-  DetectionSize: {x: 1.76, y: 4.02, z: 0.8}
-  DetectionPointOffset: {x: -0.19, y: 0.85, z: 2.05}
-  LifeTime: 3.3333333
+  Speed: 20
+  DetectionSize: {x: 2.84, y: 4.02, z: 1.12}
+  DetectionPointOffset: {x: -0.37, y: 0.85, z: 3.76}
+  LifeTime: 2.5
