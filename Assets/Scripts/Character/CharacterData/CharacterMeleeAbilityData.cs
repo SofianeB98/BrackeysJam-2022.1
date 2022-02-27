@@ -13,4 +13,5 @@ public class CharacterMeleeAbilityData : ScriptableObject
     
     [Header("Detection")] 
     public float DetectionRadius = 0.25f;
+    public Vector3 DetectionPositionOffset = Vector3.forward;
 }
