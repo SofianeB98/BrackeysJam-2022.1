@@ -186,7 +186,7 @@ MonoBehaviour:
   HealthUpdatedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_StartingHealth: 300
+  m_StartingHealth: 500
   m_AudioSource: {fileID: 0}
   m_HittedClips: []
 --- !u!82 &6260469787701272942
