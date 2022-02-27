@@ -16,4 +16,5 @@ MonoBehaviour:
   AdditionnalDamageComboPercent: 15
   DelayBeforeExitCombo: 0.5
   DelayAfterEndCombo: 0.5
-  DetectionRadius: 0.18
+  DetectionRadius: 0.8
+  DetectionPositionOffset: {x: 0, y: 0.86, z: 0.9}

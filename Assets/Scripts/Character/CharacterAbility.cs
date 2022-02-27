@@ -29,8 +29,8 @@ public class CharacterAbility : MonoBehaviour
     [Header("Melee Ability")] [SerializeField]
     private CharacterMeleeAbilityData m_MeleeAbilityData;
 
-    [SerializeField] private Transform m_BottomDetectionPoint;
-    [SerializeField] private Transform m_UpDetectionPoint;
+    //[SerializeField] private Transform m_BottomDetectionPoint;
+    //[SerializeField] private Transform m_UpDetectionPoint;
     [SerializeField] private LayerMask m_IgnoreLayer;
     [SerializeField] private float m_RangeAutoLock = 2.0f;
     [SerializeField] private GameObject m_MeleeVFX;
@@ -288,9 +288,13 @@ public class CharacterAbility : MonoBehaviour
         if (m_CurrentAbilityState != AbilityState.MELEE)
             return;
 
-        var cols = Physics.OverlapCapsule(m_BottomDetectionPoint.position, m_UpDetectionPoint.position,
-            m_MeleeAbilityData.DetectionRadius, ~m_IgnoreLayer);
+        //var cols = Physics.OverlapCapsule(m_BottomDetectionPoint.position, m_UpDetectionPoint.position,
+        //    m_MeleeAbilityData.DetectionRadius, ~m_IgnoreLayer);
 
+        var cols = Physics.OverlapSphere(
+            transform.position + (transform.rotation * m_MeleeAbilityData.DetectionPositionOffset),
+            m_MeleeAbilityData.DetectionRadius, ~m_IgnoreLayer);
+        
         m_CanTriggerExit = true;
 
         foreach (var c in cols)
@@ -374,9 +378,6 @@ public class CharacterAbility : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        if (m_UpDetectionPoint != null)
-            Gizmos.DrawWireSphere(m_UpDetectionPoint.position, m_MeleeAbilityData.DetectionRadius);
-        if (m_BottomDetectionPoint != null)
-            Gizmos.DrawWireSphere(m_BottomDetectionPoint.position, m_MeleeAbilityData.DetectionRadius);
+        Gizmos.DrawWireSphere(transform.position + (transform.rotation * m_MeleeAbilityData.DetectionPositionOffset), m_MeleeAbilityData.DetectionRadius);
     }
 }
