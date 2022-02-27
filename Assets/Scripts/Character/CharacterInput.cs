@@ -23,6 +23,8 @@ public class CharacterInput : MonoBehaviour, PlayerInputs.IPlayerActions
     private void Start()
     {
         m_UseGamepad = GameObject.FindObjectOfType<SceneLoader>().useGamepad;
+        if (m_GameInput != null)
+            m_GameInput.bindingMask = new InputBinding {groups = m_UseGamepad ? GAMEPAD_SCHEME : KEYBOARD_MOUSE_SCHEME};
     }
 
     public bool IsActive = true;
