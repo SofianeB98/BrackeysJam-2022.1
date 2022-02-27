@@ -8,7 +8,8 @@ public class PersistentObjectSpawner : MonoBehaviour
         
     private void Awake()
     {
-        if (PersistentObjectSpawner.hasSpawned)
+        var go = GameObject.Find("PersistentObjects");
+        if (go != null && PersistentObjectSpawner.hasSpawned)
             return;
             
         SpawnPersistentObjects();

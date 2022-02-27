@@ -20,6 +20,11 @@ public class CharacterInput : MonoBehaviour, PlayerInputs.IPlayerActions
     [SerializeField] private bool m_UseGamepad = false;
     private PlayerInputs m_GameInput;
 
+    private void Start()
+    {
+        m_UseGamepad = GameObject.FindObjectOfType<SceneLoader>().useGamepad;
+    }
+
     private void OnValidate()
     {
         if (m_GameInput != null)

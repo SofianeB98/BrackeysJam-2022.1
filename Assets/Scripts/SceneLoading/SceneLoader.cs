@@ -9,6 +9,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private float m_FadeWaitTime = 0.5f;
     private Fader m_Fader = null; 
     private Coroutine m_LoadSceneCoroutine = null;
+    public bool useGamepad;
 
     private WaitForSeconds m_WaitFadeWaitTime = null;
     
