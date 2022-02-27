@@ -42,7 +42,7 @@ public class CharacterMovement : MonoBehaviour
     private bool m_CanMove = true;
     private readonly int m_AnimIsDashing = Animator.StringToHash("IsDashing");
     private readonly int isDashing = Animator.StringToHash("IsDashing");
-
+    
     private void Awake()
     {
         if (m_CharacterController == null)
@@ -81,6 +81,14 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!m_CharacterInput.IsActive)
+        {
+            m_CurrentSpeed = 0;
+            m_Translation = Vector3.zero;
+            m_DashDirection = Vector3.zero;
+            return;
+        }
+        
         if (m_IsDashing)
         {
             ProcessDash();

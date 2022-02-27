@@ -9,5 +9,7 @@ public static class CharacterEvents
 
     public static Action<int> ProjectileAdded;
     public static Action<int> ProjectileRemoved;
+    
+    public static Action HeroDieEvent;
 
 }

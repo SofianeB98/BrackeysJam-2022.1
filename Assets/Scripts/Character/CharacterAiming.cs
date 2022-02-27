@@ -54,6 +54,9 @@ public class CharacterAiming : MonoBehaviour
 
     private void Update()
     {
+        if (!m_CharacterInput.IsActive)
+            return;
+        
         UpdatePlayerRotation();
         UpdatePlayerAnimation();
     }

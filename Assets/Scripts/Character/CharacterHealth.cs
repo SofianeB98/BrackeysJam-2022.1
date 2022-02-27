@@ -10,6 +10,7 @@ public class CharacterHealth : Health
     private void OnEnable()
     {
         CharacterEvents.TriggerInvicible += TriggerInvincible;
+        
     }
 
     private void OnDisable()
@@ -36,6 +37,11 @@ public class CharacterHealth : Health
         base.ReduceHealth(amount);
     }
 
+    public void OnDie()
+    {
+        CharacterEvents.HeroDieEvent.Invoke();
+    }
+    
     #region Callbacks
 
     private void TriggerInvincible(float val)

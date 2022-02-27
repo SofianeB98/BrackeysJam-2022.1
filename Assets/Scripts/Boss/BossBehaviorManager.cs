@@ -101,6 +101,11 @@ public class BossBehaviorManager : MonoBehaviour
     
     #endregion
 
+    public void OnBossDie()
+    {
+        BossEvents.BossDieEvent.Invoke();
+    }
+    
     #region AnimationCallbacks
 
     public void TriggerEarthquake()
