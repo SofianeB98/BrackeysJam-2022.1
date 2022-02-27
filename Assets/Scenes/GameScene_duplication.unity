@@ -10322,10 +10322,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1476176798}
     - target: {fileID: 7481279033319392850, guid: 61299e9073057cb47a25ef7488d9f4f0, type: 3}
-      propertyPath: m_StartingHealth
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 7481279033319392850, guid: 61299e9073057cb47a25ef7488d9f4f0, type: 3}
       propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -10726,7 +10722,7 @@ PrefabInstance:
     - target: {fileID: 2593402176199859228, guid: dda516ad551b0074c96e68503030a31e, type: 3}
       propertyPath: m_InitialState
       value: 
-      objectReference: {fileID: 11400000, guid: 40743672a8bf8c247a5b321b501df082, type: 2}
+      objectReference: {fileID: 11400000, guid: 4e754c6e5e15abd459cb19ccc4cc8b98, type: 2}
     - target: {fileID: 2593402176199859228, guid: dda516ad551b0074c96e68503030a31e, type: 3}
       propertyPath: m_RemainingState
       value: 
