@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Rotate18
   m_EditorClassIdentifier: 
   m_DegreesToRotate: 18
-  m_TimeToReach: 0.1
+  m_TimeToReach: 0.01
   m_RepeatCount: 1
   m_DelayBeforeRepeat: 0

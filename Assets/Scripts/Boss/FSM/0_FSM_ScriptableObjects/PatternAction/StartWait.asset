@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c536e411b50f150428d2dd0a24e7cdde, type: 3}
   m_Name: StartWait
   m_EditorClassIdentifier: 
-  m_DelayToWaitInSeconds: 2.5
+  m_DelayToWaitInSeconds: 3

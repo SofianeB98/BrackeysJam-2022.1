@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ce0cc5a3a411984a9f8d9aaa5aa1a07, type: 3}
-  m_Name: RotateToTarget
+  m_Script: {fileID: 11500000, guid: c536e411b50f150428d2dd0a24e7cdde, type: 3}
+  m_Name: ShortWait
   m_EditorClassIdentifier: 
-  m_SpeedToRotate: 90
-  m_TimeToReach: 0.1
+  m_DelayToWaitInSeconds: 0.3
