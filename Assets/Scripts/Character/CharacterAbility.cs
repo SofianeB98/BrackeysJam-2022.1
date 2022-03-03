@@ -218,8 +218,21 @@ public class CharacterAbility : MonoBehaviour
 
     private void TriggerMeleeAbility()
     {
+        StartCoroutine("TriggerMeleeAbilityCoroutine");
+    }
+
+    private IEnumerator TriggerMeleeAbilityCoroutine()
+    {
         if (m_CurrentAbilityState == AbilityState.CAN_NOT_PERFORM_ABILITY || !m_MeleeAbilityAvailable)
-            return;
+            yield break;
+
+        float startTime = Time.time;
+
+        while (Time.time < startTime + m_MeleeAbilityData.MoveTime)
+        {
+            m_CharacterController.Move(transform.forward * m_MeleeAbilityData.SpeedMovement * Time.deltaTime);
+            yield return null;
+        }
 
         //Debug.Log("Melee Ability !!");
 
@@ -246,6 +259,7 @@ public class CharacterAbility : MonoBehaviour
             m_MeleeVFX.SetActive(true);
 
         CharacterEvents.UpdateCanMoveEvent?.Invoke(false);
+        yield return null;
     }
 
     private void TriggerRangeAbility(bool isPerformed)
