@@ -86,7 +86,7 @@ public class CharacterAiming : MonoBehaviour
     {
         if (!m_CanAim)
             return;
-        
+
         if (m_AimingDirection.sqrMagnitude > Mathf.Epsilon)
             transform.rotation = Quaternion.LookRotation(m_AimingDirection, Vector3.up);
         else if (m_CharacterController.velocity.sqrMagnitude > 0)

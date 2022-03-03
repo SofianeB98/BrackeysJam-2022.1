@@ -16,7 +16,7 @@ MonoBehaviour:
   AdditionnalDamageComboPercent: 10
   DelayBeforeExitCombo: 0
   DelayAfterEndCombo: 0.2
-  SpeedMovement: 5
-  MoveTime: 0.3
+  SpeedMovement: 10
+  MoveTime: 0.05
   DetectionRadius: 0.8
   DetectionPositionOffset: {x: 0, y: 0.86, z: 0.9}

@@ -8,4 +8,5 @@ public class CharacterRangeAbilityData : ScriptableObject
     public Vector3 LaunchPositionOffset = Vector3.zero;
     public float DelayBetweenShoot = 0.5f;
     public int MaxMunition = 15;
+    public float AngleTresholdToAutoAim;
 }

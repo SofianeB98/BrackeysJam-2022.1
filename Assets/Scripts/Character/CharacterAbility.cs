@@ -383,7 +383,16 @@ public class CharacterAbility : MonoBehaviour
 
     public void LaunchProjectile()
     {
-        var rot = Quaternion.LookRotation(m_CharacterAiming.AimingDirection, Vector3.up);
+        var angleToTarget = Vector3.Angle(transform.forward, (m_Boss.position - transform.position).normalized);
+        Quaternion rot;
+        if (angleToTarget < m_RangeAbilityData.AngleTresholdToAutoAim)
+        {
+            var dir = (m_Boss.position - transform.position).normalized;
+            rot = Quaternion.LookRotation(dir, Vector3.up);
+        }
+        else
+            rot = Quaternion.LookRotation(m_CharacterAiming.AimingDirection, Vector3.up);
+
         Projectile p = Instantiate(m_Projectile, transform.position + (rot * m_RangeAbilityData.LaunchPositionOffset),
             rot);
         p.CollisionDetectedEvent += ProjectileCollideWithSomething;
